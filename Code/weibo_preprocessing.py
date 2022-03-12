@@ -73,18 +73,18 @@ def split_train_and_test(cascades_file):
 
 
 def download():
-	file_tmp = urlretreive("https://www.dropbox.com/s/r0kdgeh8eggqgd3/retweetWithoutContent.rar", filename=None)[0]
+	file_tmp = urlretrieve("https://www.dropbox.com/s/r0kdgeh8eggqgd3/retweetWithoutContent.rar", filename=None)[0]
 	tar = tarfile.open(fileobj=file_tmp)
 	tar.extractall("total.csv")
 	
-	file_tmp = urlretreive("https://www.dropbox.com/s/r0kdgeh8eggqgd3/graph_170w_1month.rar", filename=None)[0]
+	file_tmp = urlretrieve("https://www.dropbox.com/s/r0kdgeh8eggqgd3/graph_170w_1month.rar", filename=None)[0]
 	tar = tarfile.open(fileobj=file_tmp)
 	tar.extractall("graph_170w_1month.txt")
 
 
 def weibo_preprocessing(path):
     os.chdir(path)
-	download()
+    download()
     #------ Split the original retweet cascades
     train_cascades, test_cascades, ids  = split_train_and_test("total.txt")
     
@@ -128,5 +128,3 @@ def weibo_preprocessing(path):
     g.close()
     
     f.close()
-
-
