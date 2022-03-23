@@ -100,5 +100,5 @@ def digg_preprocessing(path):
 	file_friends = "digg_friends.csv"
 	file_casc = "digg_votes1.csv"
 	
-	digg_extract_network(file_friends)
-	digg_extract_cascades(file_casc)
+	extract_network(file_friends)
+	extract_cascades(file_casc)

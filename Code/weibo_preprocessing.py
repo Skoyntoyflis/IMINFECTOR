@@ -128,5 +128,3 @@ def weibo_preprocessing(path):
     g.close()
     
     f.close()
-
-
