@@ -60,10 +60,10 @@ class IMINFECTOR:
         return nodes, emb
         
     def read_sizes(self):
-		f = open(self.fn+"/"+self.fn+"_sizes.txt","r")
-		self.target_size = int(next(f).strip())
-		self.input_size = int(next(f).strip())
-		f.close()
+        f = open(self.fn+"/"+self.fn+"_sizes.txt","r")
+        self.target_size = int(next(f).strip())
+        self.input_size = int(next(f).strip())
+        f.close()
 
     def compute_D(self,S,T,nodes_idx,init_idx):
         """

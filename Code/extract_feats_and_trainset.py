@@ -7,6 +7,7 @@ Extract the train set for INFECTOR
 import igraph as ig
 import time
 import pandas as pd
+import json
 import numpy as np
 from datetime import datetime
 
@@ -73,7 +74,7 @@ def run(fn,sampling_perc,log):
     if fn =="mag":
         g.to_undirected()
         
-    f = open(fn+"/train_cascades.txt","r")  
+    f = open(fn+"/Init_Data/train_cascades.txt","r")  
     train_set = open(fn+"/train_set.txt","w")
     #----- Initialize features
     idx = 0
@@ -177,13 +178,13 @@ def run(fn,sampling_perc,log):
     pd.DataFrame({"Node":g.vs["name"],
                   "Kcores":kcores,
                   "Participated":g.vs["Cascades_participated"],
-     			    "Avg_Cascade_Size": a/b}).to_csv(fn+"/node_features.csv",index=False)
+                  "Avg_Cascade_Size": a/b}).to_csv(fn+"/node_features.csv",index=False)
     
-	#------ Derive incremental node dictionary 
-	graph = pd.read_csv(fn+"/"+fn+"_network.txt",sep=" ")
-	graph.columns = ["node1","node2","weight"]
-	all = list(set(graph["node1"].unique()).union(set(graph["node2"].unique()))) 
-	dic = {int(all[i]):i for i in range(0,len(all))}
-	f= open(fn+"/"+fn+"_incr_dic.json","w")
-	json.dump(dic,f)
-	f.close()
+	#------ Derive incremental node dictionary
+    graph = pd.read_csv(fn+"/"+fn+"_network.txt",sep=" ")
+    graph.columns = ["node1","node2","weight"]
+    all = list(set(graph["node1"].unique()).union(set(graph["node2"].unique())))
+    dic = {int(all[i]):i for i in range(0,len(all))}
+    f= open(fn+"/"+fn+"_incr_dic.json","w")
+    json.dump(dic,f)
+    f.close()

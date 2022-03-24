@@ -1,0 +1,22 @@
+ net:digg
+Feature extraction time:72.27760195732117
+K-core time:72.40507507324219
+ net:digg
+Feature extraction time:71.54005026817322
+K-core time:71.66157031059265
+ net:digg
+Feature extraction time:70.35064339637756
+K-core time:70.47910666465759
+Time for wc digg network:5.620174884796143
+ net:digg
+Feature extraction time:73.13320255279541
+K-core time:73.26662635803223
+Time for wc digg network:5.358782529830933
+ net:digg
+Feature extraction time:72.68829107284546
+K-core time:72.80733013153076
+Time for wc digg network:5.391023397445679
+ net:digg
+Feature extraction time:72.35448241233826
+K-core time:72.47600221633911
+Time for wc digg network:5.320590972900391

@@ -2,6 +2,7 @@
 import time
 import os
 import sys
+import json
 import argparse
 import extract_feats_and_trainset
 import preprocess_for_imm
@@ -13,11 +14,11 @@ import evaluation
 
 parser = argparse.ArgumentParser()
 
-parser.add_argument('--sampling-perc', type=int, default=120,help='')
-parser.add_argument('--learning-rate', type=int, default=0.1,help='')
-parser.add_argument('--n-epochs', type=int, default=10,help='')
-parser.add_argument('--embedding-size', type=int, default=50,help='')
-parser.add_argument('--num-neg-samples', type=int, default=10,help='')
+parser.add_argument('--sampling_perc', type=int, default=120,help='')
+parser.add_argument('--learning_rate', type=float, default=0.1,help='')
+parser.add_argument('--n_epochs', type=int, default=10,help='')
+parser.add_argument('--embedding_size', type=int, default=50,help='')
+parser.add_argument('--num_neg_samples', type=int, default=10,help='')
 
 
 if __name__ == '__main__':
@@ -30,10 +31,13 @@ if __name__ == '__main__':
 	#--- Parameters
 	learning_rate = float(args.learning_rate)
 	embedding_size = int(args.embedding_size)
+	sampling_perc = int(args.sampling_perc)
+	n_epochs = int(args.n_epochs)
+	num_neg_samples = int(args.num_neg_samples)
 
 	log= open("time_log.txt","a")
 
-	for fn in ["weibo","digg","mag"]:
+	for fn in ["digg"]: #"weibo",,"mag"
 		extract_feats_and_trainset.run(fn,sampling_perc,log)
 		preprocess_for_imm.run(fn,log)
 		rank_nodes.run(fn) 

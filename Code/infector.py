@@ -7,7 +7,10 @@ import os
 import time
 import math  
 import numpy as np
-import tensorflow as tf
+# import tensorflow as tf
+import tensorflow._api.v2.compat.v1 as tf
+# import tensorflow.compat.v1 as tf
+tf.disable_v2_behavior()
 import pickle
 import pandas as pd
 import json
