@@ -177,9 +177,9 @@ def run(fn,sampling_perc,log):
     count = 0
     for x in b:
         if x==0:
-            avg_casc_s.append(0)
+            avg_casc_s =  np.append(avg_casc_s, 0)
         else:
-            avg_casc_s.append(a(count)/b(count))
+            avg_casc_s =  np.append(avg_casc_s, a[count]/b[count])
         count= count+1
     
     print("Value of b: ",b, len(a),len(b))

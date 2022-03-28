@@ -89,77 +89,77 @@ def run(fn,log,learning_rate,n_epochs,embedding_size,num_samples):
 
     
     #--- training
-  	losses = []  
-  	sess = tf.InteractiveSession(graph = graph1)
-  	with tf.Session(graph = graph1) as sess:
-    		sess.run(tf.initialize_all_variables())    
+    losses = []  
+    sess = tf.InteractiveSession(graph = graph1)
+    with tf.Session(graph = graph1) as sess:
+            sess.run(tf.global_variables_initializer())    
         
-    		#summary_writer = tf.summary.FileWriter(result_dir, sess.graph)    
-    		#13334927 node-context pairs
-    		for epoch in range(n_epochs):
-    				#--------- Train 
-    				inputs = np.zeros(batch_size, dtype=np.int32)#np.ndarray(shape=(batch_size,1), dtype=np.int32)
-    				labels = np.zeros(batch_size, dtype=np.int32)#np.ndarray(shape=(batch_size, 1), dtype=np.int32)
-    				f = open(fn+"/inf2vec_set.txt","r")     
-    				idx2 = 0
-    				idx = 0  
-    				#---------- Only one epoch for now
-    				for line in f:
-    					#---- input node, output node 
-    					sample = line.replace("\r","").replace("\n","").split(",")              
-    					try:
-    							original = dic[sample[0]]
-    							label = dic[sample[1]]
-    					except:
-    							continue
-    					inputs[idx] = original
-    					labels[idx] = label
-    					idx+=1  
+            #summary_writer = tf.summary.FileWriter(result_dir, sess.graph)    
+            #13334927 node-context pairs
+            for epoch in range(n_epochs):
+                    #--------- Train 
+                    inputs = np.zeros(batch_size, dtype=np.int32)#np.ndarray(shape=(batch_size,1), dtype=np.int32)
+                    labels = np.zeros(batch_size, dtype=np.int32)#np.ndarray(shape=(batch_size, 1), dtype=np.int32)
+                    f = open(fn+"/inf2vec_set.txt","r")     
+                    idx2 = 0
+                    idx = 0  
+                    #---------- Only one epoch for now
+                    for line in f:
+                        #---- input node, output node 
+                        sample = line.replace("\r","").replace("\n","").split(",")              
+                        try:
+                                original = dic[sample[0]]
+                                label = dic[sample[1]]
+                        except:
+                                continue
+                        inputs[idx] = original
+                        labels[idx] = label
+                        idx+=1  
                         
-    					if(idx%batch_size==0):
-    							idx2+=1
-    							#---------- Run one training batch
-    							inputs = inputs.reshape((batch_size,1))
-    							labels = labels.reshape((batch_size,1))
+                        if(idx%batch_size==0):
+                                idx2+=1
+                                #---------- Run one training batch
+                                inputs = inputs.reshape((batch_size,1))
+                                labels = labels.reshape((batch_size,1))
                            
-    							sess.run([train_step], feed_dict = {u: inputs, v: labels}) 
-    							#summary_writer.add_summary(summary, idx2*idx)
+                                sess.run([train_step], feed_dict = {u: inputs, v: labels}) 
+                                #summary_writer.add_summary(summary, idx2*idx)
                               
-    							if idx2%1000 == 0:
-    								jl = loss1.eval( feed_dict = {u: inputs, v: labels}) 
-    								#l2 = loss2.eval( feed_dict = {u: inputs, v: labels, w : negative_samples, t:tim, c:casc})  
-    								print('Joint Loss at step %s: %s' % (idx2*idx, jl))
+                                if idx2%1000 == 0:
+                                    jl = loss1.eval( feed_dict = {u: inputs, v: labels}) 
+                                    #l2 = loss2.eval( feed_dict = {u: inputs, v: labels, w : negative_samples, t:tim, c:casc})  
+                                    print('Joint Loss at step %s: %s' % (idx2*idx, jl))
                                       
-    							inputs = np.zeros(batch_size, dtype=np.int)
-    							labels = np.zeros(batch_size, dtype=np.int)
-    							idx=0
-    				f.close()
+                                inputs = np.zeros(batch_size, dtype=np.int)
+                                labels = np.zeros(batch_size, dtype=np.int)
+                                idx=0
+                    f.close()
     
-    		fsn = open(file_Sn,"w")
-    		ftn = open(file_Tn,"w")
-    		#---------- Get the source embedding of each node
-    		Sn_list =  {}
-    		Tn_list =  {}
-    		for node in dic.keys():
-    			emb_Sn = sess.run([Sn],feed_dict = {n_in:np.asarray([dic[node]])})
-    			Sn_list[node] = emb_Sn
-    			fsn.write(node+":"+",".join([str(s) for s in list(emb_Sn)])+"\n")
-    		#Sn_list = np.concatenate( Sn_list, axis=0 )
+            fsn = open(file_Sn,"w")
+            ftn = open(file_Tn,"w")
+            #---------- Get the source embedding of each node
+            Sn_list =  {}
+            Tn_list =  {}
+            for node in dic.keys():
+                emb_Sn = sess.run([Sn],feed_dict = {n_in:np.asarray([dic[node]])})
+                Sn_list[node] = emb_Sn
+                fsn.write(node+":"+",".join([str(s) for s in list(emb_Sn)])+"\n")
+            #Sn_list = np.concatenate( Sn_list, axis=0 )
     
-    		for node in dic.keys():
-    			emb_Tn = sess.run([Tn],feed_dict = {n_out:np.asarray([dic[node]])})
-    			Tn_list[node] = emb_Tn  
-    			ftn.write(node+":"+",".join([str(s) for s in list(emb_Tn)])+"\n")
-    	  #Tn_list = np.concatenate( Tn_list, axis=0 )
-    		fsn.close()
-    		ftn.close()
-  	log.write("inf2vec training time "+fn+" "+str(time.time()-start)+"\n")
+            for node in dic.keys():
+                emb_Tn = sess.run([Tn],feed_dict = {n_out:np.asarray([dic[node]])})
+                Tn_list[node] = emb_Tn  
+                ftn.write(node+":"+",".join([str(s) for s in list(emb_Tn)])+"\n")
+          #Tn_list = np.concatenate( Tn_list, axis=0 )
+            fsn.close()
+            ftn.close()
+    log.write("inf2vec training time "+fn+" "+str(time.time()-start)+"\n")
    
     f = open(fn+"/"+fn+"_sizes.txt","r")
     target_size = int(next(f).strip())
     f.close()
-	
-	#----- create the network based on teh embeddings
+    
+    #----- create the network based on teh embeddings
     Sn_list = embedding_matrix(file_Sn,target_size,50)
     Tn_list = embedding_matrix(file_Tn,target_size,50)
     

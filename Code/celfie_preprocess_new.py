@@ -224,7 +224,7 @@ for fn in ["digg","weibo","mag"]:
 		losses = []  
 		#sess = tf.InteractiveSession(graph = graph1)
 		with tf.Session(graph = graph1) as sess:
-			sess.run(tf.initialize_all_variables())
+			sess.run(tf.global_variables_initializer())
 			#test_writer = tf.summary.FileWriter(test_result_dir, sess.graph)
         
 			#--------- Train 

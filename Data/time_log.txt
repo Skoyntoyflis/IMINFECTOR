@@ -48,3 +48,28 @@ K-core time:71.08513045310974
  net:digg
 Feature extraction time:70.91252303123474
 K-core time:71.03354668617249
+ net:digg
+Feature extraction time:71.35098624229431
+K-core time:71.47448968887329
+ net:digg
+Feature extraction time:70.91847491264343
+K-core time:71.03999519348145
+ net:digg
+Feature extraction time:71.6892580986023
+K-core time:71.81077742576599
+ net:digg
+Feature extraction time:71.38719367980957
+K-core time:71.50871348381042
+Time for wc digg network:5.341416358947754
+ net:digg
+Feature extraction time:71.32866716384888
+K-core time:71.4496898651123
+Time for wc digg network:5.385559797286987
+ net:digg
+Feature extraction time:75.0000524520874
+K-core time:75.1225643157959
+Time for wc digg network:5.551223516464233
+ net:digg
+Feature extraction time:73.28141522407532
+K-core time:73.40343141555786
+Time for wc digg network:5.399448394775391

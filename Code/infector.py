@@ -126,7 +126,7 @@ class INFECTOR:
         l2s = []
 	    #sess = tf.InteractiveSession(graph = infector.graph)
         with  tf.Session(graph = self.graph) as sess:
-            sess.run(tf.initialize_all_variables()) 
+            sess.run(tf.global_variables_initializer()) 
             for epoch in range(self.n_epochs):
                  #--------- Train 
                  f = open(self.fn+"/train_set.txt","r")
