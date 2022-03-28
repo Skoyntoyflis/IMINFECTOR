@@ -173,12 +173,23 @@ def run(fn,sampling_perc,log):
     log.write("K-core time:"+str(time.time()-start)+"\n")
     a = np.array(g.vs["Cumsize_cascades_started"], dtype=np.float)
     b = np.array(g.vs["Cascades_started"], dtype=np.float)
+    avg_casc_s = np.array([],dtype=np.float)
+    count = 0
+    for x in b:
+        if x==0:
+            avg_casc_s.append(0)
+        else:
+            avg_casc_s.append(a(count)/b(count))
+        count= count+1
+    
+    print("Value of b: ",b, len(a),len(b))
+    print("Value of avg cas size:", avg_casc_s)
     
     #------ Store node charateristics
     pd.DataFrame({"Node":g.vs["name"],
                   "Kcores":kcores,
                   "Participated":g.vs["Cascades_participated"],
-                  "Avg_Cascade_Size": a/b}).to_csv(fn+"/node_features.csv",index=False)
+                  "Avg_Cascade_Size": avg_casc_s}).to_csv(fn+"/node_features.csv",index=False)
     
 	#------ Derive incremental node dictionary
     graph = pd.read_csv(fn+"/"+fn+"_network.txt",sep=" ")

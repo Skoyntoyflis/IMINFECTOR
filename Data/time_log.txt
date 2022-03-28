@@ -20,3 +20,31 @@ Time for wc digg network:5.391023397445679
 Feature extraction time:72.35448241233826
 K-core time:72.47600221633911
 Time for wc digg network:5.320590972900391
+ net:digg
+Feature extraction time:71.32668232917786
+K-core time:71.45068168640137
+Time for wc digg network:5.499639987945557
+ net:digg
+Feature extraction time:71.66297054290771
+K-core time:71.78498554229736
+Time for wc digg network:5.35530424118042
+ net:digg
+Feature extraction time:70.99386715888977
+K-core time:71.11439418792725
+Time for wc digg network:5.376136541366577
+ net:digg
+Feature extraction time:72.17087292671204
+K-core time:72.29239273071289
+Time for wc digg network:5.656376123428345
+ net:digg
+Feature extraction time:70.89317870140076
+K-core time:71.01668238639832
+ net:digg
+Feature extraction time:71.07620239257812
+K-core time:71.19722628593445
+ net:digg
+Feature extraction time:70.96361064910889
+K-core time:71.08513045310974
+ net:digg
+Feature extraction time:70.91252303123474
+K-core time:71.03354668617249
