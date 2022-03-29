@@ -84,12 +84,7 @@ class INFECTOR:
             nce_biases = tf.Variable(tf.zeros([self.vocabulary_size]))
         
             self.loss1 = tf.reduce_mean(
-                tf.nn.nce_loss(weights= T,
-                     biases=nce_biases,
-                     labels=v,
-                     inputs=Su,
-                     num_sampled=self.num_samples,
-                     num_classes=self.target_size ))
+                tf.nn.nce_loss(weights= T, biases=nce_biases, labels=v, inputs=Su, num_sampled=self.num_samples, num_classes=self.target_size ))
             
             #------------- Second task
             #---- Cascade length
@@ -125,7 +120,8 @@ class INFECTOR:
         l1s = []
         l2s = []
 	    #sess = tf.InteractiveSession(graph = infector.graph)
-        with  tf.Session(graph = self.graph) as sess:
+        config_s = tf.ConfigProto(allow_soft_placement=True)
+        with  tf.Session(graph = self.graph, config= config_s) as sess:
             sess.run(tf.global_variables_initializer()) 
             for epoch in range(self.n_epochs):
                  #--------- Train 

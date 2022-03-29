@@ -13,7 +13,7 @@ def run(fn,log):
     attribute = open(fn+"/wc_"+fn+"_attribute.txt","w")
     graph = pd.read_csv(fn+"/"+fn+"_network.txt",sep=" ")
     if(graph.shape[1]>2):
-        graph = graph.drop(graph.columns[2],1)
+        graph = graph.drop(graph.columns[2],axis=1)
     graph.columns = ["node1","node2"]
 
     #--- if it is undirected, turn it into directed
