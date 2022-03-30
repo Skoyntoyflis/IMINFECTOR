@@ -105,3 +105,11 @@ Time for wc digg network:14.168839693069458
 Feature extraction time:126.98461413383484
 K-core time:127.24326777458191
 Time for wc digg network:12.787969589233398
+ net:digg
+Feature extraction time:73.83248805999756
+K-core time:73.96541547775269
+Time for wc digg network:6.550664186477661
+ net:digg
+Feature extraction time:79.7433135509491
+K-core time:79.88864183425903
+Time for wc digg network:8.25094985961914
