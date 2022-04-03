@@ -34,7 +34,7 @@ def remove_duplicates(cascade_nodes,cascade_times):
 			
 def store_samples(fn,cascade_nodes,cascade_times,initiators,train_set,op_time,sampling_perc=120):
     """
-    # Store the samples  for the train set as described in the node-context pair creation process for INFECTOR
+    # Store the samples for the train set as described in the node-context pair creation process for INFECTOR
     """
     #---- Inverse sampling based on copying time
     #op_id = cascade_nodes[0]
