@@ -50,7 +50,7 @@ class INFECTOR:
         self.dic_in = {initiators[i]:i for i in range(0,len(initiators))}
         f.close()     
         # self.vocabulary_size = len(self.dic_in)
-        self.vocabulary_size = 1000000
+        self.vocabulary_size = 279630
         print(self.vocabulary_size)
         #----------------- Target node dictionary
         f = open(self.fn+"/"+self.fn+"_incr_dic.json","r")

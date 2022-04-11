@@ -33,6 +33,7 @@ def embedding_matrix(file_,voc_size,embed_size):
     return list_
 
 num_samples = 10
+batch_size = 128
 
 def run(fn,log,learning_rate,n_epochs,embedding_size,num_samples):    
     print(fn)
