@@ -44,12 +44,12 @@ def run(fn,log,learning_rate,n_epochs,embedding_size,num_samples):
     #----------------- Node name - node incr id dictionary
     f = open(fn+"/"+fn+"_node_dic.json","r")
     dic = json.load(f)
-    target_size = len(dic)
-    vocabulary_size = len(dic)
-    #f = open(fn+"/"+fn+"_sizes.txt","r")
-    #target_size = int(next(f).strip())
-    #source_size = int(next(f).strip())
-    #f.close()
+    # target_size = len(dic)
+    # vocabulary_size = len(dic)
+    f = open(fn+"/"+fn+"_sizes.txt","r")
+    target_size = int(next(f).strip())
+    source_size = int(next(f).strip())
+    f.close()
     #------- Same graph as original
     #----------------- Define the model with biases
     graph1 = tf.Graph()

@@ -175,3 +175,55 @@ Feature extraction time:70.86791276931763
 K-core time:70.98843932151794
 Time for wc digg network:5.605290174484253
 Time taken for the digg infector:143.88400053977966
+ net:digg
+Feature extraction time:162.47128796577454
+K-core time:163.016756772995
+Time for wc digg network:14.127195596694946
+Time taken for the digg infector:503.6971275806427
+ net:digg
+Feature extraction time:2.0931196212768555
+K-core time:2.0931196212768555
+Time for wc digg network:0.17223238945007324
+Time taken for the digg infector:12.576388359069824
+ net:digg
+Feature extraction time:1.9505424499511719
+K-core time:1.9505424499511719
+Time for wc digg network:0.16871237754821777
+ net:digg
+Feature extraction time:1.3535215854644775
+K-core time:1.3565220832824707
+Time for wc digg network:0.10000181198120117
+ net:digg
+Feature extraction time:1.5221354961395264
+K-core time:1.5237584114074707
+Time for wc digg network:0.11491179466247559
+ net:digg
+Feature extraction time:1.6941442489624023
+K-core time:1.696146011352539
+Time for wc digg network:0.10797977447509766
+Time taken for the digg infector:9.169695377349854
+ net:digg
+Feature extraction time:1.3722457885742188
+K-core time:1.3752620220184326
+Time for wc digg network:0.11641788482666016
+Time taken for the digg infector:6.842221021652222
+ net:digg
+Feature extraction time:1.2925262451171875
+K-core time:1.293506383895874
+Time for wc digg network:0.09114599227905273
+ net:digg
+Feature extraction time:1.5202670097351074
+K-core time:1.5222537517547607
+Time for wc digg network:0.08528470993041992
+ net:digg
+Feature extraction time:1.3389244079589844
+K-core time:1.3399128913879395
+Time for wc digg network:0.08685421943664551
+ net:digg
+Feature extraction time:1.3685543537139893
+K-core time:1.3705554008483887
+Time for wc digg network:0.09766530990600586
+ net:digg
+Feature extraction time:1.304128646850586
+K-core time:1.3061323165893555
+Time for wc digg network:0.08880448341369629

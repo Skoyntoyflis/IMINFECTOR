@@ -52,7 +52,7 @@ However, some of the baselines need to be run separately using their original co
 
 Run with default parameters for *sampling percentage*, *learning rate*, *number of epochs*, *embeddings size* and *number of negative samples*.
 
-``` bash
+``` bashpyth
 python main --sampling_perc=120 learning_rate=0.1 --n_epochs=5 --embedding_size=50 --num_neg_samples=10
 ```
 
