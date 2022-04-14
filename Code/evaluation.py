@@ -23,8 +23,9 @@ def run(fn,log):
         print(seed_set_file)
         #--- Compute precision
         print("------------------")
-        fa.write(seed_set_file+"\n")
+        # f.write(seed_set_file+"\n")
         f = open(seed_set_file,"r")
+        # f.write(seed_set_file+"\n")
         l = f.read().replace("\n"," ")
         seed_set_all = [x for x in l.split(" ") if x!='']
         f.close()
@@ -76,10 +77,10 @@ def run(fn,log):
             #------- Fill the seed_cascades 
             seed_set_cascades = { seed: seed_cascades[seed] for seed in seed_set if len(seed_cascades[seed])>0 }
             print("Seeds found :",len(seed_set_cascades))
-            fa.write(str(len(seed_set_cascades))+"\n")
+            f.write(str(len(seed_set_cascades))+"\n")
 
             spreading_of_set[seed_set_size] = DNI(seed_set_cascades)
         pd.DataFrame({"Feature":list(spreading_of_set.keys()), "Cascade Size":list(spreading_of_set.values())}).to_csv(seed_set_file.replace("seeds","spreading").replace("seeds/","spreading/"),index=False)
-    fa.close()
+    f.close()
 
 
