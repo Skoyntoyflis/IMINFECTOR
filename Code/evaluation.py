@@ -24,11 +24,11 @@ def run(fn,log):
         #--- Compute precision
         print("------------------")
         # f.write(seed_set_file+"\n")
-        f = open(seed_set_file,"r")
-        # f.write(seed_set_file+"\n")
+        f = open(seed_set_file,"r+")
+        f.write(seed_set_file+"\n")
         l = f.read().replace("\n"," ")
         seed_set_all = [x for x in l.split(" ") if x!='']
-        f.close()
+        # f.close()
 
         #------- Estimate the spread of that seed set in the test cascades
         spreading_of_set = {}
@@ -52,7 +52,7 @@ def run(fn,log):
 
             #------- Fill the seed_cascades
             seed_set = set()
-            with open(fn+"/test_cascades.txt") as f:
+            with open(fn+"/Init_Data/test_cascades.txt") as f:
                 if(fn=="mag"):
                     start_t = int(next(f))
                     for line in f:
@@ -77,6 +77,7 @@ def run(fn,log):
             #------- Fill the seed_cascades 
             seed_set_cascades = { seed: seed_cascades[seed] for seed in seed_set if len(seed_cascades[seed])>0 }
             print("Seeds found :",len(seed_set_cascades))
+            f = open(seed_set_file,"r+")
             f.write(str(len(seed_set_cascades))+"\n")
 
             spreading_of_set[seed_set_size] = DNI(seed_set_cascades)
