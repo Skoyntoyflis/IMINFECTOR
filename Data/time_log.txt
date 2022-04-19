@@ -497,3 +497,8 @@ Feature extraction time:3.345022678375244
 K-core time:3.3484930992126465
 Time for wc digg network:0.33777713775634766
 Time taken for the digg infector:14.495587825775146
+ net:digg
+Feature extraction time:3.0727195739746094
+K-core time:3.075695753097534
+Time for wc digg network:0.2529597282409668
+Time taken for the digg infector:11.693199157714844
