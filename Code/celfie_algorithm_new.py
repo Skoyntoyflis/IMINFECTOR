@@ -136,8 +136,8 @@ for fn in ["digg","weibo","mag"]:#,
     embed_dim = [input_size,target_size]
     #----- Iterate using the nodeswith the best feature
 
-    file_Sn = fn+"/embeddings/source_"+str(perc)+"_embeddings.txt"
-    file_Tn = fn+"/embeddings/target_"+str(perc)+"_embeddings.txt"
+    file_Sn = fn+"/Embeddings/source_"+str(perc)+"_embeddings.txt"
+    file_Tn = fn+"/Embeddings/target_"+str(perc)+"_embeddings.txt"
 
     ILM, chosen, nodes_emb =  load_initiator(file_Sn,file_Tn,top_p,perc,embed_dim)
     ILM = np.apply_along_axis(softmax_, 1, ILM)   

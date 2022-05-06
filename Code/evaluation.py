@@ -19,7 +19,7 @@ def DNI(seed_set_cascades):
 
         
 def run(fn,log):
-    for seed_set_file in glob.glob(fn+"/seeds/*"):#:
+    for seed_set_file in glob.glob(fn+"/Seeds/*"):#:
         print(seed_set_file)
         #--- Compute precision
         print("------------------")
@@ -81,7 +81,7 @@ def run(fn,log):
             f.write(str(len(seed_set_cascades))+"\n")
 
             spreading_of_set[seed_set_size] = DNI(seed_set_cascades)
-        pd.DataFrame({"Feature":list(spreading_of_set.keys()), "Cascade Size":list(spreading_of_set.values())}).to_csv(seed_set_file.replace("seeds","spreading").replace("seeds/","spreading/"),index=False)
+        pd.DataFrame({"Feature":list(spreading_of_set.keys()), "Cascade Size":list(spreading_of_set.values())}).to_csv(seed_set_file.replace("Seeds","Spreading").replace("Seeds/","Spreading/"),index=False)
     f.close()
 
 

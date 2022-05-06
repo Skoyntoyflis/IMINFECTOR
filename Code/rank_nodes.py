@@ -24,7 +24,7 @@ def run(fn):
     top = top.drop(["Node"], axis=1)  
     
     for c in top.columns:
-        f = open(fn+"/seeds/"+c.lower()+"_seeds.txt","w")
+        f = open(fn+"/Seeds/"+c.lower()+"_seeds.txt","w")
         f.write(" ".join([str(x) for x in list(top.loc[0:perc,c].values)]))
         f.close()
     

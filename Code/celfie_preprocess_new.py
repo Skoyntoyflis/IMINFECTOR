@@ -178,8 +178,8 @@ for fn in ["digg","weibo","mag"]:
 		f.write(str(input_size))
 		f.close()
 		
-		file_Sn = fn+"/embeddings/source_"+str(perc)+"_embeddings.txt"
-		file_Tn = fn+"/embeddings/target_"+str(perc)+"_embeddings.txt"
+		file_Sn = fn+"/Embeddings/source_"+str(perc)+"_embeddings.txt"
+		file_Tn = fn+"/Embeddings/target_"+str(perc)+"_embeddings.txt"
 	
 		start = time.time()
 		#----------------- Define the model with biases

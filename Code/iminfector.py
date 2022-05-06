@@ -14,10 +14,10 @@ class IMINFECTOR:
     def __init__(self, fn, embedding_size):
         self.fn = fn
         self.embedding_size = embedding_size
-        self.file_Sn = fn+"/embeddings/infector_source3.txt"
-        self.file_Tn = fn+"/embeddings/infector_target3.txt"
-        if(fn=="digg"):
-            self.size=31
+        self.file_Sn = fn+"/Embeddings/infector_source3.txt"
+        self.file_Tn = fn+"/Embeddings/infector_target3.txt"
+        if(fn=="Digg"):
+            self.size=83
             self.P = 40
         elif(fn=="weibo"):
             self.size=1000
@@ -114,7 +114,7 @@ class IMINFECTOR:
             Q.append(temp_l)
     		
         # Do not sort
-        ftp = open(self.fn+"/seeds/final_seeds.txt","w")  
+        ftp = open(self.fn+"/Seeds/final_seeds.txt","w")  
         idx = 0
         cc = 0
         for k in init_idx:

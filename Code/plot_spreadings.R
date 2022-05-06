@@ -27,7 +27,7 @@ reshaped$variable = as.numeric(as.character(reshaped$variable))
 
 
 #------------- Plot Digg
-setwd("/Digg/spreading")
+setwd("/Digg/Spreading")
 
 df  = data.frame(matrix(ncol=10,nrow=0))
 nam = c()

@@ -7,8 +7,8 @@ import os
 import time
 import math  
 import numpy as np
-# import tensorflow as tf
-import tensorflow._api.v2.compat.v1 as tf
+import tensorflow as tf
+# import tensorflow._api.v2.compat.v1 as tf
 # import tensorflow.compat.v1 as tf
 tf.disable_v2_behavior()
 import pickle
@@ -23,8 +23,8 @@ class INFECTOR:
         self.n_epochs = n_epochs
         self.embedding_size = embedding_size
         self.num_samples = num_samples
-        self.file_Sn = fn+"/embeddings/infector_source3.txt"
-        self.file_Tn = fn+"/embeddings/infector_target3.txt"
+        self.file_Sn = fn+"/Embeddings/infector_source3.txt"
+        self.file_Tn = fn+"/Embeddings/infector_target3.txt"
         
     def create_dicts(self):
         """

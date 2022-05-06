@@ -38,8 +38,8 @@ batch_size = 128
 def run(fn,log,learning_rate,n_epochs,embedding_size,num_samples):    
     print(fn)
     start = time.time()
-    file_Sn = fn+"/embeddings/inf2vec_source_embeddings.txt"
-    file_Tn = fn+"/embeddings/inf2vec_target_embeddings.txt"
+    file_Sn = fn+"/Embeddings/inf2vec_source_embeddings.txt"
+    file_Tn = fn+"/Embeddings/inf2vec_target_embeddings.txt"
     
     #----------------- Node name - node incr id dictionary
     f = open(fn+"/"+fn+"_node_dic.json","r")
