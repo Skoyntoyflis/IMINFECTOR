@@ -17,7 +17,7 @@ class IMINFECTOR:
         self.file_Sn = fn+"/Embeddings/infector_source3.txt"
         self.file_Tn = fn+"/Embeddings/infector_target3.txt"
         if(fn=="Digg"):
-            self.size=83
+            self.size=126
             self.P = 40
         elif(fn=="weibo"):
             self.size=1000
