@@ -69,7 +69,7 @@ def store_samples(fn,cascade_nodes,cascade_times,initiators,train_set,op_time,sa
 def run(fn,sampling_perc,log):    
     print("Reading the network")
     g = ig.Graph.Read_Ncol(fn+"/"+fn+"_network.txt")
-    
+    vs = ig.VertexSeq(g)
     # in mag it is undirected
     if fn =="mag":
         g.to_undirected()
@@ -128,7 +128,7 @@ def run(fn,sampling_perc,log):
                         cascade_nodes.append(j)
                         cascade_times.append(tim)
                         
-        else:
+        else: #digg and weibo
             initiators = []
             cascade = line.replace("\n","").split(";")
             if(fn=="weibo"):
@@ -148,13 +148,18 @@ def run(fn,sampling_perc,log):
 
             #---------- Update metrics
             try:
-                g.vs.find(name=op_id)["Cascades_started"]+=1
-                g.vs.find(op_id)["Cumsize_cascades_started"]+=len(cascade_nodes)
+                g.vs.find(name=op_id)["Cascades_started"]= g.vs.find(name=op_id)["Cascades_started"] + 1
+                # print(op_id)
+                # print(g.vs.find(name=op_id)["Cascades_started"])
+                g.vs.find(op_id)["Cumsize_cascades_started"]= g.vs.find(op_id)["Cumsize_cascades_started"] + len(cascade_nodes)
+                # print(g.vs.find(op_id)["Cumsize_cascades_started"])
             except: 
+                # print("Deleted")
                 deleted_nodes.append(op_id)
                 continue
             
             if(len(cascade_nodes)<2):
+                print("True")
                 continue
             initiators = [op_id]
         store_samples(fn,cascade_nodes[1:],cascade_times[1:],initiators,train_set,op_time,sampling_perc)
@@ -172,24 +177,27 @@ def run(fn,sampling_perc,log):
     kcores = g.shell_index()
     log.write("K-core time:"+str(time.time()-start)+"\n")
     a = np.array(g.vs["Cumsize_cascades_started"], dtype=np.float)
+    # print(g.vs["Cumsize_cascades_started"])
+    print(a)
     b = np.array(g.vs["Cascades_started"], dtype=np.float)
-    avg_casc_s = np.array([],dtype=np.float)
-    count = 0
-    for x in b:
-        if x==0:
-            avg_casc_s =  np.append(avg_casc_s, 0)
-        else:
-            avg_casc_s =  np.append(avg_casc_s, a[count]/b[count])
-        count= count+1
+    # avg_casc_s = np.array([],dtype=np.float)
+    # count = 0
+    # for x in b:
+    #     print(x)
+    #     if x==0:
+    #         avg_casc_s =  np.append(avg_casc_s, 0)
+    #     else:
+    #         avg_casc_s =  np.append(avg_casc_s, a[count]/b[count])
+    #     count= count+1
     
-    print("Value of b: ",b, len(a),len(b))
-    print("Value of avg cas size:", avg_casc_s)
+    # print("Value of a and b: ", a ,b, len(a),len(b))
+    # print("Value of avg cas size:", avg_casc_s)
     
     #------ Store node charateristics
     pd.DataFrame({"Node":g.vs["name"],
                   "Kcores":kcores,
                   "Participated":g.vs["Cascades_participated"],
-                  "Avg_Cascade_Size": avg_casc_s}).to_csv(fn+"/node_features.csv",index=False)
+                  "Avg_Cascade_Size": a/b}).to_csv(fn+"/node_features.csv",index=False)
     
 	#------ Derive incremental node dictionary
     graph = pd.read_csv(fn+"/"+fn+"_network.txt",sep=" ")

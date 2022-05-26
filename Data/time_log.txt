@@ -646,3 +646,69 @@ Feature extraction time:32.44517660140991
 K-core time:32.44908332824707
 Time for wc Digg network:0.31951093673706055
 Time taken for the Digg infector:30.06559133529663
+ net:Digg
+Feature extraction time:61.57373571395874
+K-core time:61.71476483345032
+Time for wc Digg network:5.380407333374023
+ net:Digg
+Feature extraction time:65.04218816757202
+K-core time:65.21115708351135
+Time for wc Digg network:6.000120162963867
+ net:Digg
+Feature extraction time:51.63035750389099
+K-core time:51.7143657207489
+ net:Digg
+Feature extraction time:52.432183504104614
+K-core time:52.5149142742157
+ net:Digg
+Feature extraction time:57.84582829475403
+K-core time:57.93483114242554
+ net:Digg
+Feature extraction time:57.13478708267212
+K-core time:57.248793601989746
+Time for wc Digg network:4.830257415771484
+ net:Digg
+Feature extraction time:55.2418475151062
+K-core time:55.33286738395691
+Time for wc Digg network:3.9973244667053223
+ net:Digg
+Feature extraction time:50.07886505126953
+K-core time:50.17619466781616
+Time for wc Digg network:3.9352667331695557
+ net:Digg
+Feature extraction time:52.29834961891174
+K-core time:52.38437008857727
+Time for wc Digg network:3.8102006912231445
+ net:Digg
+Feature extraction time:58.541247844696045
+K-core time:58.6622040271759
+Time for wc Digg network:3.510315418243408
+ net:Digg
+Feature extraction time:59.54177737236023
+K-core time:59.63578009605408
+Time for wc Digg network:4.114392518997192
+ net:Digg
+Feature extraction time:65.55121445655823
+K-core time:65.65123057365417
+Time for wc Digg network:5.590951442718506
+ net:Digg
+Feature extraction time:67.58558487892151
+K-core time:67.71357941627502
+Time for wc Digg network:5.515958309173584
+ net:Digg
+Feature extraction time:67.84032487869263
+K-core time:67.93433332443237
+Time for wc Digg network:4.835428953170776
+ net:Digg
+Feature extraction time:66.05821466445923
+K-core time:66.1762182712555
+Time for wc Digg network:5.7321999073028564
+ net:Digg
+Feature extraction time:68.08169150352478
+K-core time:68.18969988822937
+Time for wc Digg network:5.511938095092773
+ net:Digg
+ net:Digg
+Feature extraction time:63.24445581436157
+K-core time:63.35248398780823
+Time for wc Digg network:4.571432113647461

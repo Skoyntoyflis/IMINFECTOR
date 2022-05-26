@@ -10,7 +10,7 @@ import numpy as np
 import tensorflow as tf
 # import tensorflow._api.v2.compat.v1 as tf
 # import tensorflow.compat.v1 as tf
-tf.disable_v2_behavior()
+# tf.disable_v2_behavior()
 import pickle
 import pandas as pd
 import json
@@ -54,12 +54,12 @@ class INFECTOR:
         # self.vocabulary_size = 279630
         self.vocabulary_size = 24919
         print("Value of vocab size",self.vocabulary_size)
-        print("Length of self.dic_in", len(self.dic_in))
+        print("Length of Source Dictionary", len(self.dic_in))
         #----------------- Target node dictionary
         f = open(self.fn+"/"+self.fn+"_incr_dic.json","r")
         self.dic_out = json.load(f)
         self.target_size = len(self.dic_out)
-        print(self.target_size) 	
+        print("Length of Target Dictionary", self.target_size) 	
         f = open(self.fn+"/"+self.fn+"_sizes.txt","w")
         f.write(str(self.target_size)+"\n")
         f.write(str(self.vocabulary_size))

@@ -59,7 +59,7 @@ def extract_cascades(file):
 
     #--------- For each cascade
     for i in votes["post"].unique():
-        print(i)
+        print("Preprocessing post with id: ", i)
         sub = votes[votes["post"]==i]
         s = ""
     
