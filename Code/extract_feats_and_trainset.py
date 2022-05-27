@@ -47,7 +47,7 @@ def store_samples(fn,cascade_nodes,cascade_times,initiators,train_set,op_time,sa
     if s_times==0:
         samples = []	
     else:
-        print("out")
+        print("Saved in train_set")
         probs = [float(i)/s_times for i in times]
         samples = np.random.choice(a=cascade_nodes, size=int(no_samples), p=probs) 
     
@@ -148,10 +148,10 @@ def run(fn,sampling_perc,log):
 
             #---------- Update metrics
             try:
-                g.vs.find(name=op_id)["Cascades_started"]= g.vs.find(name=op_id)["Cascades_started"] + 1
+                g.vs.select(name_eq=op_id)["Cascades_started"]= g.vs.select(name_eq=op_id)["Cascades_started"] + 1
                 # print(op_id)
                 # print(g.vs.find(name=op_id)["Cascades_started"])
-                g.vs.find(op_id)["Cumsize_cascades_started"]= g.vs.find(op_id)["Cumsize_cascades_started"] + len(cascade_nodes)
+                g.vs.select(op_id)["Cumsize_cascades_started"]= g.vs.select(op_id)["Cumsize_cascades_started"] + len(cascade_nodes)
                 # print(g.vs.find(op_id)["Cumsize_cascades_started"])
             except: 
                 # print("Deleted")
@@ -178,8 +178,9 @@ def run(fn,sampling_perc,log):
     log.write("K-core time:"+str(time.time()-start)+"\n")
     a = np.array(g.vs["Cumsize_cascades_started"], dtype=np.float)
     # print(g.vs["Cumsize_cascades_started"])
-    print(a)
     b = np.array(g.vs["Cascades_started"], dtype=np.float)
+    print(a,"\n",b)
+
     # avg_casc_s = np.array([],dtype=np.float)
     # count = 0
     # for x in b:

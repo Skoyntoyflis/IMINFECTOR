@@ -712,3 +712,26 @@ Time for wc Digg network:5.511938095092773
 Feature extraction time:63.24445581436157
 K-core time:63.35248398780823
 Time for wc Digg network:4.571432113647461
+ net:Digg
+Feature extraction time:52.55223751068115
+K-core time:52.62626266479492
+Time for wc Digg network:3.5154616832733154
+ net:Digg
+Feature extraction time:53.37833213806152
+K-core time:53.4503436088562
+Time for wc Digg network:4.3081440925598145
+ net:Digg
+Feature extraction time:53.15489721298218
+K-core time:53.23480749130249
+Time for wc Digg network:3.3688125610351562
+ net:Digg
+Feature extraction time:76.89976978302002
+K-core time:77.00877594947815
+ net:Digg
+Feature extraction time:72.96251606941223
+K-core time:73.07552337646484
+Time for wc Digg network:4.37615704536438
+ net:Digg
+Feature extraction time:62.266218185424805
+K-core time:62.34122109413147
+Time for wc Digg network:4.471157073974609
