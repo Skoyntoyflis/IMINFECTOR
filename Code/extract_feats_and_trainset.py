@@ -148,16 +148,25 @@ def run(fn,sampling_perc,log):
 
             #---------- Update metrics
             try:
-                g.vs.select(name_eq=op_id)["Cascades_started"]= g.vs.select(name_eq=op_id)["Cascades_started"] + 1
+                g.vs.find(name=op_id)["Cascades_started"]= g.vs.find(name=op_id)["Cascades_started"] + 1
                 # print(op_id)
                 # print(g.vs.find(name=op_id)["Cascades_started"])
-                g.vs.select(op_id)["Cumsize_cascades_started"]= g.vs.select(op_id)["Cumsize_cascades_started"] + len(cascade_nodes)
+                g.vs.find(op_id)["Cumsize_cascades_started"]= g.vs.find(op_id)["Cumsize_cascades_started"] + len(cascade_nodes)
                 # print(g.vs.find(op_id)["Cumsize_cascades_started"])
             except: 
                 # print("Deleted")
                 deleted_nodes.append(op_id)
                 continue
+
+            count2=0 
+            for node in cascade_nodes[1:]:
+                try:   
+                    g.vs.find(name=node)["Cascades_participated"] +=1
+                except:
+                   count2+=1
+            # print("Number of cascade nodes not found in graph=", count2)    
             
+
             if(len(cascade_nodes)<2):
                 print("True")
                 continue
@@ -181,24 +190,27 @@ def run(fn,sampling_perc,log):
     b = np.array(g.vs["Cascades_started"], dtype=np.float)
     print(a,"\n",b)
 
-    # avg_casc_s = np.array([],dtype=np.float)
-    # count = 0
-    # for x in b:
-    #     print(x)
-    #     if x==0:
-    #         avg_casc_s =  np.append(avg_casc_s, 0)
-    #     else:
-    #         avg_casc_s =  np.append(avg_casc_s, a[count]/b[count])
-    #     count= count+1
+    avg_casc_s = np.array([],dtype=np.float)
+    count = 0
+    count_initiators = 0
+    for x in b:
+        # print(x)
+        if x==0:
+            avg_casc_s =  np.append(avg_casc_s, 0)
+        else:
+            avg_casc_s =  np.append(avg_casc_s, a[count]/b[count])
+            count_initiators+= 1
+        count= count+1
     
     # print("Value of a and b: ", a ,b, len(a),len(b))
     # print("Value of avg cas size:", avg_casc_s)
-    
+    print("Found ", count_initiators, "initiators!")
+
     #------ Store node charateristics
     pd.DataFrame({"Node":g.vs["name"],
                   "Kcores":kcores,
                   "Participated":g.vs["Cascades_participated"],
-                  "Avg_Cascade_Size": a/b}).to_csv(fn+"/node_features.csv",index=False)
+                  "Avg_Cascade_Size": avg_casc_s}).to_csv(fn+"/node_features.csv",index=False)
     
 	#------ Derive incremental node dictionary
     graph = pd.read_csv(fn+"/"+fn+"_network.txt",sep=" ")
