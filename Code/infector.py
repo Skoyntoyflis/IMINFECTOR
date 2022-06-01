@@ -54,7 +54,7 @@ class INFECTOR:
         
         # self.vocabulary_size = len(self.dic_in)
         # self.vocabulary_size = 279630
-        self.vocabulary_size = 24919
+        self.vocabulary_size = 126650
         print("Value of vocab size",self.vocabulary_size)
         print("Length of Source Dictionary", len(self.dic_in))
         #----------------- Target node dictionary
