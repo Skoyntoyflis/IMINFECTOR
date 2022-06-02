@@ -7,8 +7,9 @@ import pandas as pd
 
 
 def run(fn):
+    print("----------Start of Rank Nodes-----------")
     dat = pd.read_csv(fn+"/node_features.csv")
-    if(fn =="digg"):
+    if(fn =="digg" or fn=="Digg"):
         perc = 100
     elif(fn=="weibo"):
         perc = 1000
@@ -27,4 +28,6 @@ def run(fn):
         f = open(fn+"/Seeds/"+c.lower()+"_seeds.txt","w")
         f.write(" ".join([str(x) for x in list(top.loc[0:perc,c].values)]))
         f.close()
+    print("----------End of Rank Nodes-----------")
+        
     

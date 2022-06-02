@@ -16,9 +16,25 @@ class IMINFECTOR:
         self.embedding_size = embedding_size
         self.file_Sn = fn+"/Embeddings/infector_source3.txt"
         self.file_Tn = fn+"/Embeddings/infector_target3.txt"
-        if(fn=="Digg"):
-            self.size=186
-            # self.size= len(self.dic_in)
+        if(fn=="Digg" or fn=="digg"):
+            f = open(self.fn+"/train_set.txt","r")
+            initiators = []
+            self.mi = np.inf
+            self.ma = 0
+            for l in f:
+                parts  = l.split(",")
+                initiators.append(parts[0])
+                t = int(parts[2])
+                if(t<self.mi):
+                    self.mi = t
+                if(t>self.ma):
+                    self.ma = t
+            self.rang= self.ma-self.mi
+            initiators = np.unique((initiators))
+            self.dic_in = {initiators[i]:i for i in range(0,len(initiators))}
+            f.close()  
+            # self.size=186
+            self.size= len(self.dic_in)
             self.P = 40
         elif(fn=="weibo"):
             self.size=1000
@@ -155,8 +171,10 @@ class IMINFECTOR:
             
         
 def run(fn,embedding_size,log):
+    print("----------Start of ImInfector----------")
     f = open(fn+"/train_set.txt","r")
     start = time.time()
+    
     iminfector = IMINFECTOR(fn,embedding_size)
 
     iminfector.read_sizes()
@@ -168,5 +186,6 @@ def run(fn,embedding_size,log):
     del T,S,nodes_idx
     iminfector.process_D()
     iminfector.run_method(init_idx)
+    print("----------End of ImInfector----------")
     
         

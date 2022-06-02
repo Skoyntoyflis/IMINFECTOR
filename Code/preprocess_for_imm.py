@@ -8,6 +8,7 @@ import json
 import time
 
 def run(fn,log):
+    print("----------Start of Preprocess for imm-----------")
     start = time.time()
     #--- Read graph
     attribute = open(fn+"/wc_"+fn+"_attribute.txt","w")
@@ -54,3 +55,4 @@ def run(fn,log):
     attribute.write("n="+str(len(all)+1)+"\n")
     attribute.write("m="+str(graph.shape[0])+"\n")
     attribute.close()
+    print("----------End of Preprocess for imm-----------")

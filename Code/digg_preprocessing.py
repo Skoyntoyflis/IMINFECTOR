@@ -38,7 +38,7 @@ def extract_network(file):
     #----------- Store the weighted follow network
     friends.columns = ["time","a","b"]
     friends = friends[["a","b","time"]]
-    friends.to_csv("../digg_network.txt",index=False,sep=" ",header=False)
+    friends.to_csv("../Digg_network.txt",index=False,sep=" ",header=False)
 
 
 def extract_cascades(file):

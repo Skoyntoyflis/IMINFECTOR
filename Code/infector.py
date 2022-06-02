@@ -54,14 +54,15 @@ class INFECTOR:
         
         # self.vocabulary_size = len(self.dic_in)
         # self.vocabulary_size = 279630
-        self.vocabulary_size = 126650
-        print("Value of vocab size",self.vocabulary_size)
-        print("Length of Source Dictionary", len(self.dic_in))
+        
         #----------------- Target node dictionary
         f = open(self.fn+"/"+self.fn+"_incr_dic.json","r")
         self.dic_out = json.load(f)
         self.target_size = len(self.dic_out)
-        print("Length of Target Dictionary", self.target_size) 	
+        print("Length of Target Dictionary", self.target_size) 
+        self.vocabulary_size = self.target_size
+        print("Value of vocab size",self.vocabulary_size)
+        print("Length of Source Dictionary", len(self.dic_in))	
         f = open(self.fn+"/"+self.fn+"_sizes.txt","w")
         f.write(str(self.target_size)+"\n")
         f.write(str(self.vocabulary_size))
@@ -168,7 +169,7 @@ class INFECTOR:
                            sess.run(self.train_step2, feed_dict = {"u:0": inputs[0].reshape(1,1), "v:0": labels, "c:0": [[casc]]}) 
                            idx+=1
 						
-                           if idx%1000 == 0:
+                           if idx%500 == 0:
 							#loss1.eval(feed_dict = {u: inputs, v: labels, c: [[0]]}) 
                                l1 = sess.run(self.loss1, feed_dict = {"u:0": inputs, "v:0": labels, "c:0": [[casc]]}) 
 							#l2 = loss2.eval(feed_dict = {u: inputs[0].reshape(1,1), v: labels, c: [[casc]]}) 
@@ -206,6 +207,7 @@ class INFECTOR:
 
                 
 def run(fn,learning_rate,n_epochs,embedding_size,num_neg_samples,log):
+    print("----------Start of Infector----------")
     start = time.time()
     infector = INFECTOR(fn,learning_rate,n_epochs,embedding_size,num_neg_samples)
     
@@ -216,4 +218,5 @@ def run(fn,learning_rate,n_epochs,embedding_size,num_neg_samples,log):
     l1s,l2s = infector.train()
 
     log.write("Time taken for the "+fn+" infector:"+str(time.time()-start)+"\n")
+    print("----------End of Infector----------")
 
