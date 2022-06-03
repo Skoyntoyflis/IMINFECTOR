@@ -821,3 +821,28 @@ Feature extraction time:4.264639854431152
 K-core time:4.272182464599609
 Time for wc Digg network:0.5234253406524658
 Time taken for the Digg infector:28.128523349761963
+ net:Digg
+Feature extraction time:4.007675886154175
+K-core time:4.013627767562866
+Time for wc Digg network:0.4607827663421631
+Time taken for the Digg infector:20.867686986923218
+ net:Digg
+Feature extraction time:5.845850467681885
+K-core time:5.853289842605591
+Time for wc Digg network:0.6001589298248291
+Time taken for the Digg infector:29.09234929084778
+ net:Digg
+Feature extraction time:6.241657018661499
+K-core time:6.254056930541992
+Time for wc Digg network:0.5634551048278809
+Time taken for the Digg infector:29.369613885879517
+ net:Digg
+Feature extraction time:4.4153876304626465
+K-core time:4.421338796615601
+Time for wc Digg network:0.482607364654541
+Time taken for the Digg infector:23.430020809173584
+ net:Digg
+Feature extraction time:4.142091512680054
+K-core time:4.148538827896118
+Time for wc Digg network:0.5059199333190918
+Time taken for the Digg infector:23.223188638687134

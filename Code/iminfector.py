@@ -24,12 +24,7 @@ class IMINFECTOR:
             for l in f:
                 parts  = l.split(",")
                 initiators.append(parts[0])
-                t = int(parts[2])
-                if(t<self.mi):
-                    self.mi = t
-                if(t>self.ma):
-                    self.ma = t
-            self.rang= self.ma-self.mi
+                
             initiators = np.unique((initiators))
             self.dic_in = {initiators[i]:i for i in range(0,len(initiators))}
             f.close()  
@@ -150,11 +145,11 @@ class IMINFECTOR:
                 uninfected = list(total-set(np.where(infed)[0]))
                 
                 #----- Store the new seed
-                print("Value of self.chosen[new_s]", self.chosen[new_s])
+                # print("Value of self.chosen[new_s]", self.chosen[new_s])
                 ftp.write(str(init_idx[self.chosen[new_s]])+"\n")
                 self.S.append(new_s)
-                if(len(self.S)%50==0):
-                    print("length of self.S",len(self.S))
+                # if(len(self.S)%50==0):
+                    # print("length of self.S",len(self.S))
                 # ----- Delete uid
                 Q = [l for l in Q if l[0] != new_s]
 

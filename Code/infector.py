@@ -169,7 +169,7 @@ class INFECTOR:
                            sess.run(self.train_step2, feed_dict = {"u:0": inputs[0].reshape(1,1), "v:0": labels, "c:0": [[casc]]}) 
                            idx+=1
 						
-                           if idx%500 == 0:
+                           if idx%50 == 0:
 							#loss1.eval(feed_dict = {u: inputs, v: labels, c: [[0]]}) 
                                l1 = sess.run(self.loss1, feed_dict = {"u:0": inputs, "v:0": labels, "c:0": [[casc]]}) 
 							#l2 = loss2.eval(feed_dict = {u: inputs[0].reshape(1,1), v: labels, c: [[casc]]}) 
