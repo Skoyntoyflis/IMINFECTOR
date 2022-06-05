@@ -67,6 +67,7 @@ def store_samples(fn,cascade_nodes,cascade_times,initiators,train_set,op_time,sa
 
             
 def run(fn,sampling_perc,log):    
+    print("----------Start of Extract Feats-----------")
     print("Reading the network")
     g = ig.Graph.Read_Ncol(fn+"/"+fn+"_network.txt")
     vs = ig.VertexSeq(g)
@@ -220,3 +221,4 @@ def run(fn,sampling_perc,log):
     f= open(fn+"/"+fn+"_incr_dic.json","w")
     json.dump(dic,f)
     f.close()
+    print("----------End of Extract Feats-----------")

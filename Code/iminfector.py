@@ -16,9 +16,20 @@ class IMINFECTOR:
         self.embedding_size = embedding_size
         self.file_Sn = fn+"/Embeddings/infector_source3.txt"
         self.file_Tn = fn+"/Embeddings/infector_target3.txt"
-        if(fn=="Digg"):
-            self.size=186
-            # self.size= len(self.dic_in)
+        if(fn=="Digg" or fn=="digg"):
+            f = open(self.fn+"/train_set.txt","r")
+            initiators = []
+            self.mi = np.inf
+            self.ma = 0
+            for l in f:
+                parts  = l.split(",")
+                initiators.append(parts[0])
+                
+            initiators = np.unique((initiators))
+            self.dic_in = {initiators[i]:i for i in range(0,len(initiators))}
+            f.close()  
+            # self.size=186
+            self.size= len(self.dic_in)
             self.P = 40
         elif(fn=="weibo"):
             self.size=1000
@@ -134,11 +145,11 @@ class IMINFECTOR:
                 uninfected = list(total-set(np.where(infed)[0]))
                 
                 #----- Store the new seed
-                print("Value of self.chosen[new_s]", self.chosen[new_s])
+                # print("Value of self.chosen[new_s]", self.chosen[new_s])
                 ftp.write(str(init_idx[self.chosen[new_s]])+"\n")
                 self.S.append(new_s)
-                if(len(self.S)%50==0):
-                    print("length of self.S",len(self.S))
+                # if(len(self.S)%50==0):
+                    # print("length of self.S",len(self.S))
                 # ----- Delete uid
                 Q = [l for l in Q if l[0] != new_s]
 
@@ -155,8 +166,10 @@ class IMINFECTOR:
             
         
 def run(fn,embedding_size,log):
+    print("----------Start of ImInfector----------")
     f = open(fn+"/train_set.txt","r")
     start = time.time()
+    
     iminfector = IMINFECTOR(fn,embedding_size)
 
     iminfector.read_sizes()
@@ -168,5 +181,6 @@ def run(fn,embedding_size,log):
     del T,S,nodes_idx
     iminfector.process_D()
     iminfector.run_method(init_idx)
+    print("----------End of ImInfector----------")
     
         
