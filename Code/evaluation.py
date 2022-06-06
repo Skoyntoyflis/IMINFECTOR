@@ -38,7 +38,7 @@ def run(fn,log):
             step=1000
             ma=11000
         elif(fn=="digg" or fn=="Digg"):
-            print("Chose digg")
+            # print("Chose digg")
             step=10
             ma = 60
         else:

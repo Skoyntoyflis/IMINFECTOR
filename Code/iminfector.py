@@ -31,7 +31,7 @@ class IMINFECTOR:
             # self.size=186
             self.size= len(self.dic_in)
             self.P = 40
-        elif(fn=="weibo"):
+        elif(fn=="weibo" or fn=="Weibo"):
             self.size=1000
             self.P = 10
         else:
@@ -130,10 +130,10 @@ class IMINFECTOR:
         idx = 0
         cc = 0
         for k in init_idx:
-            print(k)
+            print("This is in the init idx:", k)
             cc = cc +1
-        # print("Values in init index:", cc)
-        # print(self.chosen)
+        print("Values in init index:", cc)
+        print(self.chosen)
         while len(self.S) < self.size :
             u = Q[0]
             new_s = u[nid]
