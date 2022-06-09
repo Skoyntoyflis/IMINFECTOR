@@ -173,13 +173,16 @@ def run(fn,embedding_size,log):
     iminfector = IMINFECTOR(fn,embedding_size)
 
     iminfector.read_sizes()
-    
+    print("--------Now in self.embedding_matrix(T/S)--------------")
     nodes_idx, T = iminfector.embedding_matrix("T")
     init_idx, S = iminfector.embedding_matrix("S")
     
+    print("--------Now in self.compute_D--------------")
     iminfector.compute_D(S,T,nodes_idx,init_idx)
     del T,S,nodes_idx
+    print("--------Now in self.process_D--------------")
     iminfector.process_D()
+    print("--------Now in self.run_method--------------")
     iminfector.run_method(init_idx)
     print("----------End of ImInfector----------")
     
