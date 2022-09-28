@@ -47,7 +47,7 @@ def store_samples(fn,cascade_nodes,cascade_times,initiators,train_set,op_time,sa
     if s_times==0:
         samples = []	
     else:
-        print("Saved in train_set")
+        # print("Saved in train_set")
         probs = [float(i)/s_times for i in times]
         samples = np.random.choice(a=cascade_nodes, size=int(no_samples), p=probs) 
     

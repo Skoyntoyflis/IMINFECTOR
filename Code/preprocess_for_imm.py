@@ -1,11 +1,13 @@
 """
 Weigh all networks based on weighted cascade, and derive the attribute file required for IMM
 """
-
+from xml.dom.minicompat import NodeList
+import igraph as ig
 import pandas as pd
 import numpy as np
 import json
 import time
+import networkx as nx
 
 def run(fn,log):
     print("----------Start of Preprocess for imm-----------")
@@ -22,6 +24,27 @@ def run(fn,log):
         tmp = graph.copy()
         graph = pd.DataFrame(np.concatenate([graph.values, tmp[["node2","node1"]].values]),columns=graph.columns)
         del tmp
+    
+    # #--- Compute incidence matrix
+    # print("Incidence matrix computation")
+    # g = ig.Graph.Read_Ncol(fn+"/"+fn+"_network.txt")
+    # G = g.to_networkx()
+    # # print(G)
+    # R = nx.incidence_matrix(G, nodelist=None, edgelist=None, oriented=True, weight=None)
+    # print(np.shape(R))
+    # print(R.shape[0])
+
+
+    # #--- Compute Basic Node Similarity Matrix
+    # nodes = G.nodes
+    # # upper=np.zeros((R.shape[0],1))  
+    # for node_1 in nodes:
+    #     for node_2 in nodes:
+    #         if node_1 != node_2:
+                
+    #             print(up)
+
+    
 
     #--- Compute influence weight
     outdegree = graph.groupby("node1").agg('count').reset_index()

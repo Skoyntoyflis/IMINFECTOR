@@ -876,3 +876,87 @@ Feature extraction time:15.846320152282715
 K-core time:15.870692253112793
 Time for wc Digg network:1.3371000289916992
 Time taken for the Digg infector:71.04115557670593
+ net:Digg
+Feature extraction time:15.22767949104309
+K-core time:15.2490074634552
+Time for wc Digg network:1.2613263130187988
+Time taken for the Digg infector:42.621729373931885
+ net:Digg
+Feature extraction time:7.382951974868774
+K-core time:7.389895915985107
+ net:Digg
+Feature extraction time:7.1161048412323
+K-core time:7.1245362758636475
+ net:Digg
+Feature extraction time:6.593320608139038
+K-core time:6.60125732421875
+ net:Digg
+Feature extraction time:6.914230823516846
+K-core time:6.92266321182251
+ net:Digg
+Feature extraction time:7.523816108703613
+K-core time:7.531256675720215
+ net:Digg
+Feature extraction time:6.522888660430908
+K-core time:6.530329465866089
+ net:Digg
+Feature extraction time:6.589352369308472
+K-core time:6.596793174743652
+ net:Digg
+Feature extraction time:6.570504426956177
+K-core time:6.5784406661987305
+ net:Digg
+Feature extraction time:7.155784845352173
+K-core time:7.161240339279175
+Time for wc Digg network:2.5717568397521973
+ net:Digg
+Feature extraction time:6.64788031578064
+K-core time:6.654824256896973
+ net:Digg
+Feature extraction time:6.9053053855896
+K-core time:6.9137372970581055
+Time for wc Digg network:2.38228440284729
+ net:Digg
+Feature extraction time:7.615079164505005
+K-core time:7.622023344039917
+ net:Digg
+Feature extraction time:7.072951793670654
+K-core time:7.080888509750366
+ net:Digg
+Feature extraction time:6.845784902572632
+K-core time:6.855209112167358
+ net:Digg
+Feature extraction time:6.7247607707977295
+K-core time:6.734185457229614
+ net:Digg
+Feature extraction time:6.770888805389404
+K-core time:6.781801223754883
+ net:Digg
+Feature extraction time:6.830408096313477
+K-core time:6.836360454559326
+ net:Digg
+Feature extraction time:0.026784181594848633
+K-core time:0.02727985382080078
+ net:Digg
+Feature extraction time:0.024801015853881836
+K-core time:0.024801015853881836
+ net:Digg
+Feature extraction time:0.025792837142944336
+K-core time:0.025792837142944336
+Time for wc Digg network:0.052576303482055664
+ net:Digg
+Feature extraction time:7.953351736068726
+K-core time:7.961287498474121
+Time for wc Digg network:2.7270045280456543
+ net:Digg
+Feature extraction time:6.558600664138794
+K-core time:6.566040992736816
+Time for wc Digg network:0.4806222915649414
+ net:Digg
+Feature extraction time:1.0723505020141602
+K-core time:1.0728471279144287
+Time for wc Digg network:0.06894350051879883
+ net:Digg
+Feature extraction time:1.2370214462280273
+K-core time:1.2380130290985107
+Time for wc Digg network:0.09175920486450195
