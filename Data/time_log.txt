@@ -964,3 +964,15 @@ Time for wc Digg network:0.09175920486450195
 Feature extraction time:10.979930400848389
 K-core time:10.99381947517395
 Time for wc Digg network:0.7395346164703369
+ net:Digg
+Feature extraction time:30.320394277572632
+K-core time:30.340522289276123
+Time for wc Digg network:1.1238768100738525
+ net:Digg
+Feature extraction time:2.2075891494750977
+K-core time:2.2091033458709717
+Time for wc Digg network:0.13631796836853027
+ net:Digg
+Feature extraction time:6.929201364517212
+K-core time:6.935042858123779
+Time for wc Digg network:0.39601612091064453
