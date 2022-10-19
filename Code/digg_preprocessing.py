@@ -97,8 +97,9 @@ def download():
 def digg_preprocessing(path):
 	os.chdir(path)
 	# download()
-	file_friends = "../digg_friends_sliced.csv"
-	file_casc = "../digg_votes1_sliced.csv"
+	file_friends = "../digg_friends_apr.csv"
+	file_casc = "../Init_Data/digg_votes1.csv"
+    
 	
 	extract_network(file_friends)
 	extract_cascades(file_casc)
