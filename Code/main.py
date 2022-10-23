@@ -16,7 +16,7 @@ parser = argparse.ArgumentParser()
 
 parser.add_argument('--sampling_perc', type=int, default=120,help='')
 parser.add_argument('--learning_rate', type=float, default=0.1,help='')
-parser.add_argument('--n_epochs', type=int, default=10,help='')
+parser.add_argument('--n_epochs', type=int, default=5,help='')
 parser.add_argument('--embedding_size', type=int, default=50,help='')
 parser.add_argument('--num_neg_samples', type=int, default=10,help='')
 
