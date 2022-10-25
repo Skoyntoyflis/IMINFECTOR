@@ -97,7 +97,7 @@ def download():
 def digg_preprocessing(path):
 	os.chdir(path)
 	# download()
-	file_friends = "../digg_friends_apr.csv"
+	file_friends = "../digg_friends_apr_kG.csv"
     
 
 	file_casc = "../Init_Data/digg_votes1.csv"
