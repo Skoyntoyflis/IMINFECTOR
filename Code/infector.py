@@ -27,6 +27,7 @@ class INFECTOR:
         self.num_samples = num_samples
         self.file_Sn = fn+"/Embeddings/infector_source3.txt"
         self.file_Tn = fn+"/Embeddings/infector_target3.txt"
+        print("CREATED")
         
     def create_dicts(self):
         """

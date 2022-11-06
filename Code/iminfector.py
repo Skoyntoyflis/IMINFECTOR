@@ -85,6 +85,7 @@ class IMINFECTOR:
         perc = int(self.P*S.shape[0]/100)
         norm = np.apply_along_axis(lambda x: sum(x**2),1,S)
         self.chosen = np.argsort(-norm)[0:perc]
+        print("Self chosen:",self.chosen,"Percentage:", perc)
         norm = norm[self.chosen]
         bins = (self.target_size)*norm/sum(norm)
         self.bins = [int(i) for i in np.rint(bins)]
@@ -133,7 +134,7 @@ class IMINFECTOR:
             print("This is in the init idx:", k)
             cc = cc +1
         print("Values in init index:", cc)
-        print(self.chosen)
+        print("Length of chosen:",len(self.chosen))
         while len(self.S) < self.size :
             u = Q[0]
             new_s = u[nid]
@@ -145,7 +146,7 @@ class IMINFECTOR:
                 uninfected = list(total-set(np.where(infed)[0]))
                 
                 #----- Store the new seed
-                # print("Value of self.chosen[new_s]", self.chosen[new_s])
+                print("Value of self.chosen[new_s]", self.chosen[new_s],"and new_s:",new_s)
                 ftp.write(str(init_idx[self.chosen[new_s]])+"\n")
                 self.S.append(new_s)
                 # if(len(self.S)%50==0):
