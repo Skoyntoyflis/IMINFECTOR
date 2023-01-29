@@ -28,8 +28,8 @@ class IMINFECTOR:
             initiators = np.unique((initiators))
             self.dic_in = {initiators[i]:i for i in range(0,len(initiators))}
             f.close()  
-            # self.size=186
-            self.size= len(self.dic_in)
+            self.size=50
+            # self.size= len(self.dic_in)
             self.P = 40
         elif(fn=="weibo" or fn=="Weibo"):
             self.size=1000
@@ -81,11 +81,11 @@ class IMINFECTOR:
         """
         # Derive matrix D and vector E
         """
-        print("shape of S: ",S.shape[0])
+        # print("shape of S: ",S.shape[0])
         perc = int(self.P*S.shape[0]/100)
         norm = np.apply_along_axis(lambda x: sum(x**2),1,S)
         self.chosen = np.argsort(-norm)[0:perc]
-        print("Self chosen:",self.chosen,"Percentage:", perc)
+        print("Percentage:", self.P, "and 1st dimension of D:", perc) #"Self chosen:",self.chosen,
         norm = norm[self.chosen]
         bins = (self.target_size)*norm/sum(norm)
         self.bins = [int(i) for i in np.rint(bins)]
@@ -131,29 +131,29 @@ class IMINFECTOR:
         idx = 0
         cc = 0
         for k in init_idx:
-            print("This is in the init idx:", k)
+            # print("This is in the init idx:", k)
             cc = cc +1
         print("Values in init index:", cc)
         print("Length of chosen:",len(self.chosen))
         while len(self.S) < self.size :
             u = Q[0]
             new_s = u[nid]
+            # print(len(self.S))
             if (u[iteration] == len(self.S)):
-                print("length of self.S", len(self.S)," and length of self.size", self.size)
+                # print("length of self.S", len(self.S)," and length of self.size", self.size)
                 influenced = self.infl_set(new_s,int(self.bins[new_s]),uninfected)   
                 #influenced = self.infl_set(new_s,self.bins[new_s],uninfected)   
                 infed[influenced]  = 1         
                 uninfected = list(total-set(np.where(infed)[0]))
                 
                 #----- Store the new seed
-                print("Value of self.chosen[new_s]", self.chosen[new_s],"and new_s:",new_s)
+                # print("Value of self.chosen[new_s]", self.chosen[new_s],"and new_s:",new_s)
                 ftp.write(str(init_idx[self.chosen[new_s]])+"\n")
                 self.S.append(new_s)
                 # if(len(self.S)%50==0):
                     # print("length of self.S",len(self.S))
                 # ----- Delete uid
                 Q = [l for l in Q if l[0] != new_s]
-
             else:
                 #------- Keep only the number of nodes influenceed to rank the candidate seed        
                 spr = self.infl_spread(new_s,int(self.bins[new_s]),uninfected)        

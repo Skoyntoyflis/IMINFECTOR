@@ -26,7 +26,8 @@ def split_train_and_test(cascades_file):
         date = line.split(" ")[1].split("-")
         original_user_id = line.split(" ")[2]
         
-        retweets = f.next().replace(" \n","").split(" ")
+        retweets = next(f).replace(" \n","").split(" ")
+        
         #----- keep only the cascades and the nodes that are active in train (2011.10.29 -2012.9.28) and test (2012.9.28 -2012.10.29)
            
         retweet_ids = ""
@@ -84,7 +85,7 @@ def download():
 
 def weibo_preprocessing(path):
     os.chdir(path)
-    download()
+    # download()
     #------ Split the original retweet cascades
     train_cascades, test_cascades, ids  = split_train_and_test("total.txt")
     
@@ -107,7 +108,7 @@ def weibo_preprocessing(path):
     f.close()
 
     #------ Keep the subnetwork of the active users
-    g = open("weibo_network.txt","w")
+    g = open("../Weibo_network.txt","w")
     
     f = open("graph_170w_1month.txt","r")
     

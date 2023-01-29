@@ -2,7 +2,7 @@
 Data from https://www.isi.edu/~lerman/downloads/digg2009.html 
 Extract network and diffusion cascades from Digg
 """
-
+from tqdm import tqdm
 import os
 import pandas as pd
 import networkx as nx
@@ -58,8 +58,8 @@ def extract_cascades(file):
     f_test = open("test_cascades.txt","w")
 
     #--------- For each cascade
-    for i in votes["post"].unique():
-        print("Preprocessing post with id: ", i)
+    for i in tqdm(votes["post"].unique()):
+        # print("Preprocessing post with id: ")
         sub = votes[votes["post"]==i]
         s = ""
     
@@ -97,7 +97,7 @@ def download():
 def digg_preprocessing(path):
 	os.chdir(path)
 	# download()
-	file_friends = "../Init_Data/digg_friends.csv"
+	file_friends = "../Init_Data/digg_friends_k5G.csv"
     
 
 	file_casc = "../Init_Data/digg_votes1.csv"

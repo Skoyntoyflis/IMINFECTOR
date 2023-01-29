@@ -3,7 +3,7 @@
 Compute kcore and avg cascade length
 Extract the train set for INFECTOR
 """
-
+from tqdm import tqdm
 import igraph as ig
 import time
 import pandas as pd
@@ -75,6 +75,7 @@ def run(fn,sampling_perc,log):
     if fn =="mag":
         g.to_undirected()
         
+    
     f = open(fn+"/Init_Data/train_cascades.txt","r")  
     train_set = open(fn+"/train_set.txt","w")
     #----- Initialize features
@@ -91,7 +92,8 @@ def run(fn,sampling_perc,log):
 
     start = time.time()    
     #---------------------- Iterate through cascades to create the train set
-    for line in f:
+    print("Iterating now through cascades to create the train set")
+    for line in tqdm(f):
         if(fn=="mag"):
             parts = line.split(";")
             initiators = parts[0].replace(",","").split(" ")
@@ -132,7 +134,7 @@ def run(fn,sampling_perc,log):
         else: #digg and weibo
             initiators = []
             cascade = line.replace("\n","").split(";")
-            if(fn=="weibo"):
+            if(fn=="Weibo"):
                 cascade_nodes = list(map(lambda x:  x.split(" ")[0],cascade[1:]))
                 #cascade_times = list(map(lambda x:  datetime.strptime(x.replace("\r","").split(" ")[1], '%Y-%m-%d-%H:%M:%S'),cascade[1:]))
                 cascade_times = list(map(lambda x:  int(( (datetime.strptime(x.replace("\r","").split(" ")[1], '%Y-%m-%d-%H:%M:%S')-datetime.strptime("2011-10-28", "%Y-%m-%d")).total_seconds())),cascade[1:]))

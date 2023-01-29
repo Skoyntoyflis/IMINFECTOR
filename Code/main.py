@@ -37,7 +37,7 @@ if __name__ == '__main__':
 
 	log= open("time_log.txt","a")
 
-	for fn in ["Digg"]: #"weibo",,"mag"
+	for fn in ["Digg"]: #"weibo","Digg","mag"
 		extract_feats_and_trainset.run(fn,sampling_perc,log)
 		preprocess_for_imm.run(fn,log)
 		rank_nodes.run(fn) 

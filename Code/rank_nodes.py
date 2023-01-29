@@ -11,7 +11,7 @@ def run(fn):
     dat = pd.read_csv(fn+"/node_features.csv")
     if(fn =="digg" or fn=="Digg"):
         perc = 100
-    elif(fn=="weibo"):
+    elif(fn=="Weibo"):
         perc = 1000
     else:
         perc = 10000
