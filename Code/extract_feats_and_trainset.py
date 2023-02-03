@@ -93,6 +93,7 @@ def run(fn,sampling_perc,log):
     start = time.time()    
     #---------------------- Iterate through cascades to create the train set
     print("Iterating now through cascades to create the train set")
+    initiators_whole=[]
     for line in tqdm(f):
         if(fn=="mag"):
             parts = line.split(";")
@@ -151,10 +152,10 @@ def run(fn,sampling_perc,log):
 
             #---------- Update metrics
             try:
-                g.vs.find(name=op_id)["Cascades_started"]= g.vs.find(name=op_id)["Cascades_started"] + 1
+                g.vs.find(name=op_id)["Cascades_started"]+= 1
                 # print(op_id)
                 # print(g.vs.find(name=op_id)["Cascades_started"])
-                g.vs.find(op_id)["Cumsize_cascades_started"]= g.vs.find(op_id)["Cumsize_cascades_started"] + len(cascade_nodes)
+                g.vs.find(op_id)["Cumsize_cascades_started"]+= len(cascade_nodes)
                 # print(g.vs.find(op_id)["Cumsize_cascades_started"])
             except: 
                 # print("Deleted")
@@ -171,15 +172,21 @@ def run(fn,sampling_perc,log):
             
 
             if(len(cascade_nodes)<2):
-                print("True")
+                # print("True")
                 continue
             initiators = [op_id]
+            
+            if op_id not in initiators_whole:
+                initiators_whole.append(op_id)
+
         store_samples(fn,cascade_nodes[1:],cascade_times[1:],initiators,train_set,op_time,sampling_perc)
                     
         idx+=1
         if(idx%1000==0):
             print("-------------------",idx)
-        
+    
+    print("Number of initiators from initiators_whole = ", len(initiators_whole))
+       
     print("Number of nodes not found in the graph: ",len(deleted_nodes))
     f.close()
     train_set.close()

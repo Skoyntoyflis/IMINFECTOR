@@ -4,9 +4,10 @@ Take the top nodes ranked based on kcore and avg cascade length (top no=seed siz
 
 import os            
 import pandas as pd
-
+import time
 
 def run(fn):
+    start = time.time()
     print("----------Start of Rank Nodes-----------")
     dat = pd.read_csv(fn+"/node_features.csv")
     if(fn =="digg" or fn=="Digg"):
@@ -29,5 +30,6 @@ def run(fn):
         f.write(" ".join([str(x) for x in list(top.loc[0:perc,c].values)]))
         f.close()
     print("----------End of Rank Nodes-----------")
+    print("--- %s seconds ---\n" % (time.time() - start))
         
     

@@ -9,6 +9,7 @@ import json
 import time
 import networkx as nx
 
+
 def run(fn,log):
     print("----------Start of Preprocess for imm-----------")
     start = time.time()
@@ -74,6 +75,7 @@ def run(fn,log):
     graph = graph[["node2","node1","outdegree"]]
     graph.to_csv(fn+"/wc_"+fn+"_network.txt",header=False,index=False, sep=" ")
     log.write("Time for wc "+fn+" network:"+str(time.time()-start)+"\n")
+    print("--- %s seconds ---\n" % (time.time() - start))
     
     attribute.write("n="+str(len(all)+1)+"\n")
     attribute.write("m="+str(graph.shape[0])+"\n")

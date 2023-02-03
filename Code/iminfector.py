@@ -81,7 +81,7 @@ class IMINFECTOR:
         """
         # Derive matrix D and vector E
         """
-        # print("shape of S: ",S.shape[0])
+        print("shape of S: ",S.shape[0])
         perc = int(self.P*S.shape[0]/100)
         norm = np.apply_along_axis(lambda x: sum(x**2),1,S)
         self.chosen = np.argsort(-norm)[0:perc]

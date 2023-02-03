@@ -37,11 +37,12 @@ if __name__ == '__main__':
 
 	log= open("time_log.txt","a")
 
-	for fn in ["Digg"]: #"weibo","Digg","mag"
-		extract_feats_and_trainset.run(fn,sampling_perc,log)
-		preprocess_for_imm.run(fn,log)
-		rank_nodes.run(fn) 
-		infector.run(fn,learning_rate,n_epochs,embedding_size,num_neg_samples,log)
+	for fn in ["Digg"]: #"Weibo","Digg","mag"
+		# extract_feats_and_trainset.run(fn,sampling_perc,log)
+		# preprocess_for_imm.run(fn,log)
+		# rank_nodes.run(fn) 
+		# infector.run(fn,learning_rate,n_epochs,embedding_size,num_neg_samples,log)
 		iminfector.run(fn,embedding_size,log)
 		evaluation.run(fn,log)
 	log.close()
+

@@ -53,7 +53,7 @@ class INFECTOR:
         self.dic_in = {initiators[i]:i for i in range(0,len(initiators))}
         f.close()     
         
-        # self.vocabulary_size = len(self.dic_in)
+        self.vocabulary_size = len(self.dic_in)
         # self.vocabulary_size = 279630
         
         #----------------- Target node dictionary
@@ -61,9 +61,9 @@ class INFECTOR:
         self.dic_out = json.load(f)
         self.target_size = len(self.dic_out)
         print("Length of Target Dictionary", self.target_size) 
-        self.vocabulary_size = self.target_size
+        # self.vocabulary_size = self.target_size
         print("Value of vocab size",self.vocabulary_size)
-        print("Length of Source Dictionary", len(self.dic_in))	
+        # print("Length of Source Dictionary", len(self.dic_in))	
         f = open(self.fn+"/"+self.fn+"_sizes.txt","w")
         f.write(str(self.target_size)+"\n")
         f.write(str(self.vocabulary_size))
@@ -84,15 +84,20 @@ class INFECTOR:
             S = tf.Variable(tf.random_uniform([self.vocabulary_size, self.embedding_size], -1.0, 1.0), name="S")
             u2 =  tf.squeeze(u)
             Su = tf.nn.embedding_lookup(S,u2, name="Su")
+            
+            
             #------------- First task
             #------------ Target (hidden and output weights)
+            #!!!!!!!!!!!! ALERT---------------------------
             T = tf.Variable(tf.truncated_normal( [self.target_size, self.embedding_size], stddev = 1.0 / math.sqrt(self.embedding_size)), name="T")
+            # T = tf.Variable(tf.truncated_normal( [self.embedding_size, self.target_size], stddev = 1.0 / math.sqrt(self.embedding_size)), name="T")
+            #------------------------------------------------
+            
             
             #---- Noise contrastive loss function
-            nce_biases = tf.Variable(tf.zeros([self.vocabulary_size]))
+            nce_biases = tf.Variable(tf.zeros([self.target_size]))
         
-            self.loss1 = tf.reduce_mean(
-                tf.nn.nce_loss(weights= T, biases=nce_biases, labels=v, inputs=Su, num_sampled=self.num_samples, num_classes=self.target_size ))
+            self.loss1 = tf.reduce_mean(tf.nn.nce_loss(weights= T, biases=nce_biases, labels=v, inputs=Su, num_sampled=self.num_samples, num_classes=self.target_size ))
             
             #------------- Second task
             #---- Cascade length
@@ -128,8 +133,10 @@ class INFECTOR:
         l1s = []
         l2s = []
 	    #sess = tf.InteractiveSession(graph = infector.graph)
-        config_s = tf.ConfigProto(allow_soft_placement=True)
-        with  tf.Session(graph = self.graph, config= config_s) as sess:
+        # config_s = tf.ConfigProto(allow_soft_placement=True)------------------------------------------------------------
+        # with  tf.Session(graph = self.graph, config= config_s) as sess:
+        with  tf.Session(graph = self.graph) as sess:
+            tf.global_variables_initializer().run()
             sess.run(tf.global_variables_initializer()) 
             for epoch in range(self.n_epochs):
                  #--------- Train 
@@ -203,7 +210,8 @@ class INFECTOR:
                 emb_Tn = sess.run("Tn:0",feed_dict = {"n_out:0":np.asarray([self.dic_out[node]])})
                 ftn.write(node+":"+",".join([str(s) for s in list(emb_Tn)])+"\n")
             ftn.close()
-			
+            sess.close()
+
             return l1s,l2s
 
                 
@@ -216,8 +224,11 @@ def run(fn,learning_rate,n_epochs,embedding_size,num_neg_samples,log):
     
     infector.model()
     
+    # infector.model.summaary()
+    
     l1s,l2s = infector.train()
 
     log.write("Time taken for the "+fn+" infector:"+str(time.time()-start)+"\n")
+    print("--- %s seconds ---\n" % (time.time() - start))
     print("----------End of Infector----------")
 

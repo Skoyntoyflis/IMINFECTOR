@@ -6,7 +6,7 @@ from digg_preprocessing import digg_preprocessing
 """
 Main
 """
-if __name__ == '__main__':
+def run():
 	## Create folder structure
 	# abspath = os.path.abspath(__file__)
 	# dname = os.path.dirname(abspath)

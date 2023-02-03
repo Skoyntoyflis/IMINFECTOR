@@ -1345,3 +1345,33 @@ Feature extraction time:71.72640562057495
 K-core time:71.73338651657104
 Time for wc Digg network:0.3839724063873291
 Time taken for the Digg infector:18.886834859848022
+ net:Digg
+Feature extraction time:109.33154487609863
+K-core time:109.36113953590393
+ net:Weibo
+Feature extraction time:1492.9370341300964
+K-core time:1520.684417963028
+Time for wc Weibo network:484.1111092567444
+Time for wc Weibo network:520.4864325523376
+Time taken for the Weibo infector:2224.4840388298035
+ net:Digg
+Feature extraction time:108.86492872238159
+K-core time:108.86999416351318
+Time for wc Digg network:0.20875954627990723
+ net:Digg
+Feature extraction time:108.12408494949341
+K-core time:108.12916445732117
+ net:Digg
+Feature extraction time:108.24191951751709
+K-core time:108.24699139595032
+Time taken for the Digg infector:36.93748879432678
+ net:Digg
+Feature extraction time:114.8609926700592
+K-core time:115.04436159133911
+Time for wc Digg network:5.653107643127441
+Time taken for the Digg infector:393.397878408432
+ net:Weibo
+Feature extraction time:1520.3741917610168
+K-core time:1552.9682877063751
+Time for wc Weibo network:472.9742774963379
+Time taken for the Weibo infector:3120.6049287319183
