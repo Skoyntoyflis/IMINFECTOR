@@ -1,7 +1,7 @@
-networkx==2.3
-pandas==0.24.2
-numpy==1.16.4
-tensorflow==1.15.2
-igraph==0.7.1
-pyunpack==0.1.2
+networkx==3.0
+pandas==1.5.3
+numpy==1.23.0
+tensorflow==2.9.0
+igraph==0.9.11
+pyunpack==0.3
 patool==1.12

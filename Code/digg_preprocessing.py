@@ -99,7 +99,6 @@ def digg_preprocessing(path):
 	# download()
 	file_friends = "../Init_Data/digg_friends.csv"
     
-
 	file_casc = "../Init_Data/digg_votes1.csv"
     
 	

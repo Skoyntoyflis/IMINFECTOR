@@ -5,7 +5,8 @@ import json
 from pathlib import Path
 import argparse
 
-import preprocessing
+from digg_preprocessing import digg_preprocessing
+
 
 import numpy as np 
 import pandas as pd 
@@ -13,11 +14,12 @@ import igraph as ig
 import networkx as nx
 import runpy
 
-# preprocessing.run()
+os.path.join("..","Data","Digg","Init_Data")
+digg_preprocessing(os.path.join("..","Data","Digg","Init_Data"))
 
 
 # g = ig.Graph.Read_Ncol("../Weibo/Weibo_network.txt")
-g = ig.Graph.Read_Ncol("../Data/Digg/Digg_network.txt")
+g = ig.Graph.Read_Ncol("../Digg_network.txt")
 G = g.to_networkx()
 H = G.to_undirected()
 print("Nodes in whole graph:",G.number_of_nodes())
@@ -26,8 +28,8 @@ print("Edges in whole graph:",G.number_of_edges())
 
 #--------- Create k-core decomposed graphs and store them ---------
 for i in range(2,15):
-  df = pd.read_csv("../Data/Digg/Init_Data/digg_friends.csv",header=None) # mutual, time, node_id1, node_id2
-  with open('../Data/Digg/Digg_incr_dic.json','r') as f:
+  df = pd.read_csv("digg_friends.csv",header=None) # mutual, time, node_id1, node_id2
+  with open('../Digg_incr_dic.json','r') as f:
     data = f.read()
   data = "[" + data + "]"
   dic = pd.read_json(data).transpose()# node_index, node_id
@@ -57,7 +59,7 @@ for i in range(2,15):
   
   #--------- Store to file ------------------------------
   filename = "digg_friends_k"+str(i)+"G.csv"
-  p = "../Data/Digg/Init_Data/"
+  p = ""
   df_dr2.to_csv(Path(p+filename),index=False,sep=",",header=False)
 
 
@@ -65,9 +67,9 @@ for i in range(2,15):
 
 
 #--------- Create K-Truss decomposed graphs and store them ---------
-for i in range(2,15):
-  df = pd.read_csv("../Data/Digg/Init_Data/digg_friends.csv",header=None) # mutual, time, node_id1, node_id2
-  with open('../Data/Digg/Digg_incr_dic.json','r') as f:
+for i in range(2,7):
+  df = pd.read_csv("digg_friends.csv",header=None) # mutual, time, node_id1, node_id2
+  with open('../Digg_incr_dic.json','r') as f:
     data = f.read()
   data = "[" + data + "]"
   dic = pd.read_json(data).transpose()# node_index, node_id
@@ -97,6 +99,6 @@ for i in range(2,15):
   
   #--------- Store to file ------------------------------
   filename = "digg_friends_t"+str(i)+"H.csv"
-  p = "../Data/Digg/Init_Data/"
+  p = ""
   df_dr2.to_csv(Path(p+filename),index=False,sep=",",header=False)
 
