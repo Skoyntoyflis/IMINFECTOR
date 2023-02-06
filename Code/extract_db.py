@@ -12,22 +12,21 @@ import json
 
 
 def sort_papers(papers):
-    """
-    # Sort MAG diffusion cascade, which is a list of papers and their authors, in the order the paper'sdate
-    """
-    x =list(map(int,list(map(lambda x:x.split()[-1],papers))))
-    return [papers[i].strip() for i in np.argsort(x)]
+	"""
+	# Sort MAG diffusion cascade, which is a list of papers and their authors, in the order the paper'sdate
+	"""
+	x =list(map(int,list(map(lambda x:x.split()[-1],papers))))
+	return [papers[i].strip() for i in np.argsort(x)]
   
   
-def run(fn,log):    
+def run(fn,log,network):
 	print("Reading the network")
-	start = time.time()  
-
-	g = ig.Graph.Read_Ncol(fn+"/"+fn+"_network.txt")    
+	start = time.time()
+	g = ig.Graph.Read_Ncol(fn+"/"+fn+"_network.txt")
 	#------ in mag it is undirected
-	if fn =="mag":
-	    g.to_undirected()
-	f = open(fn+"/train_cascades.txt","r")    
+	if fn=="mag":
+		g.to_undirected()
+	f = open(fn+"/train_cascades.txt","r")
 	#----- initialize features
 	deleted_nodes = []
 	g.vs["Cascades_started"] = 0
@@ -35,7 +34,7 @@ def run(fn,log):
 	g.es["Inf"] = 0
 	if(fn=="mag"):
 		start_t = int(next(f))
-	idx=0  
+	idx=0
 	#---------------------- Iterate through cascades to create the train set
 	for line in f:
 		if(fn=="mag"):
@@ -46,14 +45,14 @@ def run(fn,log):
 			papers = parts[1].replace("\n","").split(":")
 			papers = sort_papers(papers)
 			papers = [list(map(lambda x: x.replace(",",""),i)) for i in list(map(lambda x:x.split(" "),papers))]
-            
+			
 			#---- Extract the authors from the paper list
 			flatten = []
 			for i in papers:
 				flatten = flatten+i[:-1]
 			u,i = np.unique(flatten,return_index=True)
 			cascade_nodes = list(u[np.argsort(i)])
-            
+			
 			#--- Update metrics of initiators
 			for op_id in initiators:
 				try:
@@ -61,7 +60,7 @@ def run(fn,log):
 					g.vs.find(name=op_id)["Cumsize_cascades_started"]+=len(papers)
 				except:
 					continue
-                
+				
 			cascade_times = []
 			cascade_nodes = []
 			for p in papers:
@@ -74,7 +73,7 @@ def run(fn,log):
 							continue
 						cascade_nodes.append(j)
 						cascade_times.append(tim)
-                        
+						
 			#--- Draw edges between initiators and the rest
 			for i in initiators:
 				for j in cascade_nodes:
@@ -120,16 +119,16 @@ def run(fn,log):
 			except: 
 				deleted_nodes.append(op_id)
 				continue
-            
+			
 			if(len(cascade_nodes)<2):
 				continue
-            
+			
 			for i in cascade_nodes[1:]:
 				try:
 					g.vs.find(name=i)["Cascades_participated"]+=1
 				except:
 					continue
-                
+				
 			#---- Data-based weighing
 			for i in range(len(cascade_nodes)): 
 				# if it takes more than 15 mins, go away)
@@ -144,11 +143,11 @@ def run(fn,log):
 						g.es[edge]["Inf"]+=1
 					except:
 						continue
-                   
+				   
 		idx+=1
 		if(idx%1000==0):
 			print("-------------------",idx)
-    
+	
 	idx=0    
 	print("Number of nodes not found in the graph: ",len(deleted_nodes))
 	f.close()
@@ -166,7 +165,7 @@ def run(fn,log):
 			#--------- Node 2 has influence on Node 1
 			#if(w>0):
 			db_w.write(str(g.vs[edge.tuple[1]]["name"])+","+str(g.vs[edge.tuple[0]]["name"])+","+str(edge["Inf"])+","+str(activity)+"\n")
-      
+	  
 			#--------- Weight for DB
 			if(idx%100000==0):
 				print("-------------------",idx)	
@@ -189,22 +188,22 @@ def run(fn,log):
  
 	d.to_csv(fn+"/"+fn+"_db.inf",index=False,header=False,sep=" ")
 	nodes = list(set(d["node1"].unique()).union(set(d["node2"].unique()))) 
-    
+	
 	dic = {int(nodes[i]):i for i in range(0,len(nodes))}
 	d['node1'] = d['node1'].map(dic)
 	d['node2'] = d['node2'].map(dic)
-    
+	
 	#--- Store the ids to translate the seeds of IMM
 	f= open(fn+"/"+fn+"_db_incr_dic.json","w")
 	json.dump(dic,f)
 	f.close()
 	
 	d.to_csv(fn+"/"+fn+"_db.inf",index=False,header=False,sep=" ")
-    
+	
 	attribute = open(fn+"/"+fn+"_db_attribute.txt","w")
 	attribute.write("n="+str(len(nodes)+1)+"\n")
 	attribute.write("m="+str(d.shape[0])+"\n")
 	attribute.close()
-    
+	
 	log.write("extract db "+fn+" :"+str(time.time()-start)+"\n")
-        
+		

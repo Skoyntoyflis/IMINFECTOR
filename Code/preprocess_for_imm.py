@@ -10,12 +10,13 @@ import time
 import networkx as nx
 
 
-def run(fn,log):
+def run(fn,log,network):
     print("----------Start of Preprocess for imm-----------")
     start = time.time()
     #--- Read graph
     attribute = open(fn+"/wc_"+fn+"_attribute.txt","w")
-    graph = pd.read_csv(fn+"/"+fn+"_network.txt",sep=" ")
+    # graph = pd.read_csv(fn+"/"+fn+"_network.txt",sep=" ")
+    graph = pd.read_csv(network,sep=" ")
     if(graph.shape[1]>2):
         graph = graph.drop(graph.columns[2],axis=1)
     graph.columns = ["node1","node2"]

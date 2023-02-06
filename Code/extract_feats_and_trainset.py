@@ -66,10 +66,13 @@ def store_samples(fn,cascade_nodes,cascade_times,initiators,train_set,op_time,sa
 
 
             
-def run(fn,sampling_perc,log):    
+def run(fn,sampling_perc,log,network):    
     print("----------Start of Extract Feats-----------")
     print("Reading the network")
-    g = ig.Graph.Read_Ncol(fn+"/"+fn+"_network.txt")
+    # g = ig.Graph.Read_Ncol(fn+"/"+fn+"_network.txt")
+    g = ig.Graph.Read_Ncol(network)
+    
+    
     vs = ig.VertexSeq(g)
     # in mag it is undirected
     if fn =="mag":
@@ -198,7 +201,7 @@ def run(fn,sampling_perc,log):
     a = np.array(g.vs["Cumsize_cascades_started"], dtype=np.float)
     # print(g.vs["Cumsize_cascades_started"])
     b = np.array(g.vs["Cascades_started"], dtype=np.float)
-    print(a,"\n",b)
+    # print(a,"\n",b)
 
     avg_casc_s = np.array([],dtype=np.float)
     count = 0
@@ -223,7 +226,8 @@ def run(fn,sampling_perc,log):
                   "Avg_Cascade_Size": avg_casc_s}).to_csv(fn+"/node_features.csv",index=False)
     
 	#------ Derive incremental node dictionary
-    graph = pd.read_csv(fn+"/"+fn+"_network.txt",sep=" ")
+    # graph = pd.read_csv(fn+"/"+fn+"_network.txt",sep=" ")
+    graph = pd.read_csv(network,sep=" ")
     graph.columns = ["node1","node2","weight"]
     all = list(set(graph["node1"].unique()).union(set(graph["node2"].unique())))
     dic = {int(all[i]):i for i in range(0,len(all))}
