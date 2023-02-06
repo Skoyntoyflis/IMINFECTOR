@@ -30,7 +30,7 @@ if __name__ == '__main__':
   
   kG_previous = G
   #--------- Create k-core decomposed graphs and store them ---------
-  for i in range(2,2):
+  for i in range(2,8):
     start = time.time()
     
     #--------- Create k-core decomposition ----------------
