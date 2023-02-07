@@ -11,3 +11,10 @@ Data/Weibo/Init_Data/active_users.txt
 Data/Digg/Embeddings/infector_source3.txt
 Data/Digg/Embeddings/infector_target3.txt
 Data/Digg/E.npy
+Data/Weibo/Init_Data/weibo_network.rar
+Data/Weibo/Init_Data/weibo_network.rar:Zone.Identifier
+Data/Weibo/Init_Data/retweetWithoutContent.rar:Zone.Identifier
+Data/Weibo/Init_Data/graph_170w_1month.rar:Zone.Identifier
+Data/Digg/Embeddings/infector_target3.txt
+Data/Digg/Embeddings/infector_source3.txt
+Data/Digg/E.npy
