@@ -16,8 +16,8 @@ import runpy
 
 
 if __name__ == '__main__':
-  os.chdir(os.path.join("..","Data","Digg","Init_Data"))
-  # digg_preprocessing(os.path.join("..","Data","Digg","Init_Data"))
+  # os.chdir(os.path.join("..","Data","Digg","Init_Data"))
+  digg_preprocessing(os.path.join("..","Data","Digg","Init_Data"))
 
   print("Reading network with networkx")
   G = nx.read_edgelist("../Digg_network.txt",data=(("time", int),),create_using=nx.DiGraph())
@@ -30,7 +30,7 @@ if __name__ == '__main__':
   
   kG_previous = G
   #--------- Create k-core decomposed graphs and store them ---------
-  for i in range(2,2):
+  for i in range(2,3):
     start = time.time()
     
     #--------- Create k-core decomposition ----------------
@@ -66,7 +66,7 @@ if __name__ == '__main__':
 
   tH_previous = H
   #--------- Create K-Truss decomposed graphs and store them ---------
-  for i in range(2,2):
+  for i in range(2,3):
     start = time.time()
     
     #--------- Create K-truss decomposition ----------------
