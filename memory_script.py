@@ -30,7 +30,7 @@ if __name__ == '__main__':
                 exit(1)
             y = y/1024
             mem.append(y)
-            # print(max(mem))
+            print(max(mem))
             file_object.write("%.2f\t%.2f\n" % (x,max(mem)))
             time.sleep(0.1)
     except KeyboardInterrupt:
