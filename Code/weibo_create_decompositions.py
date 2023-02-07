@@ -15,13 +15,12 @@ import runpy
 
 if __name__ == '__main__':
 
-  os.path.join("..","Data","Weibo","Init_Data")
-  weibo_preprocessing(os.path.join("..","Data","Weibo","Init_Data"))
+  os.chdir(os.path.join("..","Data","Weibo","Init_Data"))
+  # weibo_preprocessing(os.path.join("..","Data","Weibo","Init_Data"))
 
   print("Reading network with networkx")
   G = nx.read_edgelist("../Weibo_network.txt",data=(("time", int),),create_using=nx.DiGraph())
-  print("Transforming to undirected")
-  H = G.to_undirected()
+  
   print("Nodes in whole graph:",G.number_of_nodes())
   print("Edges in whole graph:",G.number_of_edges())
 
@@ -31,7 +30,7 @@ if __name__ == '__main__':
   
   kG_previous = G
   #--------- Create k-core decomposed graphs and store them ---------
-  for i in range(2,15):
+  for i in range(2,3):
     start = time.time()
     
     #--------- Create k-core decomposition ----------------
@@ -52,7 +51,7 @@ if __name__ == '__main__':
     
     
     #--------- Store to file ------------------------------
-    filename = "Weibo_network_k"+str(i)+"G.csv"
+    filename = "Weibo_network_k"+str(i)+"G.txt"
     p = "../K-core_networks/"
     df_dr2.to_csv(Path(p+filename),index=False,sep=",",header=False)
     
@@ -61,7 +60,8 @@ if __name__ == '__main__':
 
 
 
-
+  print("Transforming to undirected")
+  H = G.to_undirected()
 
   # #--------- Create K-Truss decomposed graphs and store them ---------
   # for i in range(2,5):
