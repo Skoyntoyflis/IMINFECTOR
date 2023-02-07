@@ -1375,3 +1375,18 @@ Feature extraction time:1520.3741917610168
 K-core time:1552.9682877063751
 Time for wc Weibo network:472.9742774963379
 Time taken for the Weibo infector:3120.6049287319183
+ net:Digg
+Feature extraction time:72.21383476257324
+K-core time:72.34149289131165
+Time for wc Digg network:5.330739259719849
+Time taken for the Digg infector:147.4814989566803
+ net:Digg
+Feature extraction time:75.92989420890808
+K-core time:76.06353640556335
+Time for wc Digg network:5.545183181762695
+Time taken for the Digg infector:147.44415736198425
+ net:Digg
+Feature extraction time:73.57523989677429
+K-core time:73.70987915992737
+Time for wc Digg network:5.3806068897247314
+Time taken for the Digg infector:141.5334095954895

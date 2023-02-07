@@ -16,6 +16,6 @@ if __name__ == '__main__':
 	# 	for folder in ["Init_Data","Embeddings", "Seeds","Spreading"]:
 	# 		os.makedirs(os.path.join(dataset,folder))
 		
-	ans = weibo_preprocessing(os.path.join("..","Data","Weibo","Init_Data"))
-	# ans = digg_preprocessing(os.path.join("..","Data","Digg","Init_Data"))
+	# ans = weibo_preprocessing(os.path.join("..","Data","Weibo","Init_Data"))
+	ans = digg_preprocessing(os.path.join("..","Data","Digg","Init_Data"))
 	print(ans)
