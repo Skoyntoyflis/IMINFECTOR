@@ -3,3 +3,11 @@ Data/Digg/D.npy
 Data/Digg/digg_network.txt
 Data/Digg/wc_digg_attribute.txt
 Data/Digg/digg_network.txt
+Data/Weibo/Init_Data/total.txt
+Data/Weibo/Init_Data/retweetWithoutContent.rar
+Data/Weibo/Init_Data/graph_170w_1month.txt
+Data/Weibo/Init_Data/graph_170w_1month.rar
+Data/Weibo/Init_Data/active_users.txt
+Data/Digg/Embeddings/infector_source3.txt
+Data/Digg/Embeddings/infector_target3.txt
+Data/Digg/E.npy
