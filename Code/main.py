@@ -38,11 +38,11 @@ if __name__ == '__main__':
 	log= open("time_log.txt","a")
 
 
-	network = "/home/dimcpap/IMINFECTOR/Data/Digg/K-core_networks/Digg_network_k2G.txt"
+	# network = "/home/dimcpap/IMINFECTOR/Data/Digg/K-truss_networks/Digg_network_t7H.txt"
 	
  
 	for fn in ["Digg"]: #"Weibo","Digg","mag"
-		# network = fn+"/"+fn+"_network.txt"
+		network = fn+"/"+fn+"_network.txt"
 		extract_feats_and_trainset.run(fn,sampling_perc,log, network)
 		preprocess_for_imm.run(fn,log, network)
 		rank_nodes.run(fn) 

@@ -28,7 +28,7 @@ if __name__ == '__main__':
 
   print("Starting k-core decompositions\n")
   
-  kG_previous = G
+  # kG_previous = G
   #--------- Create k-core decomposed graphs and store them ---------
   for i in range(2,3):
     start = time.time()
@@ -64,7 +64,7 @@ if __name__ == '__main__':
   H = G.to_undirected()
   print("Starting K-truss decompositions\n")
 
-  tH_previous = H
+  # tH_previous = H
   #--------- Create K-Truss decomposed graphs and store them ---------
   for i in range(2,3):
     start = time.time()

@@ -5,3 +5,4 @@ tensorflow==2.9.0
 igraph==0.9.11
 pyunpack==0.3
 patool==1.12
+tqdm==4.64.1
