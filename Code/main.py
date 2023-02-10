@@ -38,7 +38,7 @@ if __name__ == '__main__':
 	log= open("time_log.txt","a")
 
 
-	# network = "/home/dimcpap/IMINFECTOR/Data/Digg/K-truss_networks/Digg_network_t7H.txt"
+	network = "/home/mdakm/Dimitris/IMINFECTOR/Data/Digg/K-truss_networks/Digg_network_t7H.txt"
 	
  
 	for fn in ["Digg"]: #"Weibo","Digg","mag"
