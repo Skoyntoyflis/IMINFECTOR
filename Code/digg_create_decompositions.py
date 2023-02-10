@@ -16,8 +16,8 @@ import runpy
 
 
 if __name__ == '__main__':
-  os.chdir(os.path.join("..","Data","Digg","Init_Data"))
-  # digg_preprocessing(os.path.join("..","Data","Digg","Init_Data"))
+  # os.chdir(os.path.join("..","Data","Digg","Init_Data"))
+  digg_preprocessing(os.path.join("..","Data","Digg","Init_Data"))
 
   print("Reading network with networkx")
   G = nx.read_edgelist("../Digg_network.txt",data=(("time", int),),create_using=nx.DiGraph())
