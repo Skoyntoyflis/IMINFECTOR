@@ -16,8 +16,8 @@ import runpy
 
 
 if __name__ == '__main__':
-  # os.chdir(os.path.join("..","Data","Digg","Init_Data"))
-  digg_preprocessing(os.path.join("..","Data","Digg","Init_Data"))
+  os.chdir(os.path.join("..","Data","Digg","Init_Data"))
+  # digg_preprocessing(os.path.join("..","Data","Digg","Init_Data"))
 
   print("Reading network with networkx")
   G = nx.read_edgelist("../Digg_network.txt",data=(("time", int),),create_using=nx.DiGraph())
@@ -25,12 +25,50 @@ if __name__ == '__main__':
   print("Nodes in whole graph:",G.number_of_nodes())
   print("Edges in whole graph:",G.number_of_edges())
 
+  coreness = nx.core_number(G)
+
+  
+  coreness_pd = pd.DataFrame(coreness.items(), columns=['ID','core'])
+
+  # print(coreness_pd.max(axis=1))
+  count=0
+  keep_cores = pd.DataFrame()
+  for i in reversed(range(2,212)):
+    no_keep_cores = coreness_pd['core'].value_counts(ascending=True)[i]
+    keep_cores = pd.concat([keep_cores, coreness_pd.loc[coreness_pd['core']==i]])
+    count += no_keep_cores
+    if i == 3:
+      keep_cores_3k =keep_cores
+    elif i == 4:
+      keep_cores_4k =keep_cores
+  
+  print(count)
+  print("3-core:",keep_cores_3k)
+  print("4-core:",keep_cores_4k)
+  
+  # print(coreness_pd["core"].value_counts(ascending=True)[211])
+  
+  # print(coreness_pd.loc[coreness_pd['core']==211])
+  
+  # print(coreness_pd['core'].value_counts(ascending=True)[211])
+  # print(coreness_pd['core'].value_counts(ascending=True)[210])
+  # print(coreness_pd['core'].value_counts(ascending=True)[209])
+  # print(coreness_pd['core'].value_counts(ascending=True)[208])
+  # print(coreness_pd['core'].value_counts(ascending=True)[207])
+  # print(coreness_pd['core'].value_counts(ascending=True)[206])
+
+  # print(coreness_pd)
+  
+  
+  # print(coreness)
+
+
 
   print("Starting k-core decompositions\n")
   
   # kG_previous = G
   #--------- Create k-core decomposed graphs and store them ---------
-  for i in range(2,3):
+  for i in range(2,2):
     start = time.time()
     
     #--------- Create k-core decomposition ----------------
@@ -60,13 +98,13 @@ if __name__ == '__main__':
   
 
 
-  print("Transforming to undirected for k-truss")
-  H = G.to_undirected()
-  print("Starting K-truss decompositions\n")
+  # print("Transforming to undirected for k-truss")
+  # H = G.to_undirected()
+  # print("Starting K-truss decompositions\n")
 
   # tH_previous = H
   #--------- Create K-Truss decomposed graphs and store them ---------
-  for i in range(2,3):
+  for i in range(2,2):
     start = time.time()
     
     #--------- Create K-truss decomposition ----------------
