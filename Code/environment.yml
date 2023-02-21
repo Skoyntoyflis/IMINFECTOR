@@ -1,4 +1,4 @@
-name: /home/mdakm/Dimitris/envs
+name: myenv
 channels:
   - anaconda
   - conda-forge
